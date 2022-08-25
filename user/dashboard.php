@@ -10,6 +10,10 @@
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
+
+    if($row['package'] != 'success'){
+        header("location: index.php");
+    }
     if($row['status'] == 1){
         header("location: ../newadmin/html/");
     }

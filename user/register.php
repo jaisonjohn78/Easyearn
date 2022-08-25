@@ -50,7 +50,7 @@ ob_end_flush();
                                 <div class="col-12">
                                     <div class="card border-0" style="z-index: 1">
                                         <div class="card-body p-0">
-                                            <h4 class="card-title text-center" style="margin-top:80px;">Register with Easyearn</h4>
+                                            <h4 class="card-title text-center" style="margin-top: 80%;">Register with Easyearn</h4>
                                             <hr>
                                             <?php
                                                 if(isset($_SESSION['MESSAGE']))
