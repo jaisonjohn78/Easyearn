@@ -369,9 +369,9 @@
                               plans to knowledge.</p>
                         </div>
                         <div class="footer-icon">
-                           <a href="https://www.facebook.com/Millionaire-Track-109191691604545/" target = "_blank"><i class="fab fa-facebook-f"></i></a>
-                           <a href="https://www.instagram.com/millionairetrackcom/?igshid=YmMyMTA2M2Y=" target = "_blank"><i class="fab fa-instagram"></i></a>
-                           <a href="https://www.youtube.com/channel/UCwPvcHQ2iBneNafDlL8aNug" target = "_blank"> <i class="fab fa-youtube"></i></a>
+                           <a href="https://www.facebook.com/" target = "_blank"><i class="fab fa-facebook-f"></i></a>
+                           <a href="https://www.instagram.com/" target = "_blank"><i class="fab fa-instagram"></i></a>
+                           <a href="https://www.youtube.com/" target = "_blank"> <i class="fab fa-youtube"></i></a>
                         </div>
                      </div>
                   </div>

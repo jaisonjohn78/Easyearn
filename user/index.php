@@ -6,11 +6,14 @@
 
     login_user();
 
-
-
-
-
     ob_end_flush();
+    
+    $_GET['authen'] = '';
+    if($_GET['authen'] == 'success') {
+                        
+        $error = "<div style='color:red'> Payment Successfull please login to Visit Dashboard </div>";
+        set_message($error);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

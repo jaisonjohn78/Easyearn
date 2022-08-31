@@ -2,7 +2,7 @@
     
     $hostname = "127.0.0.1:3306";
     $username = "u706182210_root";
-    $password = "easylearn@1";
+    $password = "Easyearn@1";
     $database = "u706182210_easyearn";
 
     // $con = mysqli_connect("localhost","root","","easyearn");

@@ -198,7 +198,7 @@ if(isset($_POST['submit']))
        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
    }
    echo "</div>";     
-   $msg = "<center><div class='alert alert-info' style='color:black;height:60px;width:500px;margin-top:50px;'>We've send a verification link on your email address.</div></center >";
+   $msg = "<center><div class='alert alert-info' style='color:black;height:60px;width:500px;margin-top:50px;'>Mail Has Been Send Sucessfully</div></center >";
 }
 ?>
 
@@ -407,8 +407,8 @@ if(isset($_POST['submit']))
                                 </div>
 
                                 <div class="google-map-area contact-map pt-100 mb-30">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1751.9760400678697!2d77.28420520811972!3d28.571201645610508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3884e438f83%3A0x66ebc3e61ea87448!2s555%2C%20Street%20Number%204!5e0!3m2!1sen!2sin!4v1650510062469!5m2!1sen!2sin"></iframe>
+                                    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+src="https://www.google.com/maps/embed/v1/place?q=place_id:EjFTYXlhamkgUGF0aCwgU3ViaGFucHVyYSwgVmFkb2RhcmEsIEd1amFyYXQsIEluZGlhIi4qLAoUChIJGQLpWLbIXzkRtLeM99vtADwSFAoSCfVjRICUyF85EV87ziwFLAwg&key=AIzaSyC1WXuxwiU9OXbbGozHoTNYreoZulVshxE"></iframe>
                                 </div>
                             </div>
                         </form>
@@ -431,8 +431,8 @@ if(isset($_POST['submit']))
                                         </div>
                                         <div class="support-info-phone">
                                             <span>Phone</span>
-                                            <p>Mobile :<a href="tel:+919289438188">+919289438188</a></p>
-                                            <p>Hotline :<a href="tel:+911143065662">+911143065662</a></p>
+                                            <p>Mobile :<a href="tel:+919023954613">+919023954613</a></p>
+                                            
                                         </div>
                                     </div>
                                     <div class="support-item">
@@ -453,8 +453,8 @@ if(isset($_POST['submit']))
                                         </div>
                                         <div class="support-info-email">
                                             <span>Email</span>
-                                            <a href="mailto:info@millionairetrack.com"><span class="__cf_email__"
-                                                    data-cfemail="6821060e07280d10090518040d460b0705">info@millionairetrack.com</span></a>
+                                            <a href="mailto:easyearn@gmail.com"><span class="__cf_email__"
+                                                    data-cfemail="6821060e07280d10090518040d460b0705">easyearn@gmail.com</span></a>
                                         </div>
                                     </div>
                                     <div class="support-item">
@@ -484,16 +484,9 @@ if(isset($_POST['submit']))
                                         </div>
                                         <div class="support-info-phone">
                                             <span>Location</span>
-                                            <p>Address 1:<a>GROUND FLOOR F/SIDE, S-555, GALI NO 4 ARA MACHINE WALI, JOGA
-                                                    BAI EXTN JAMIA NAGAR OKHLA NEAR MUMTAZ MASJID, New Delhi, Delhi,
-                                                    110025</a></p>
+                                            <p>Address :<a>1st Floor Besides Syaji Road Near Textile Market, Vadodara, Gujrat - 300018</a></p>
                                             <br />
-                                            <p>Address 1:<a>K.H. No.27/7 H.No.C-3 C-4
-                                                    Gali No.1
-                                                    Near Madina Masjid
-                                                    Budh Vihar
-                                                    Mandoli
-                                                    North East Delhi Delhi - 110093</a></p>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -521,11 +514,11 @@ if(isset($_POST['submit']))
                                         plans to knowledge.</p>
                                 </div>
                                 <div class="footer-icon">
-                                    <a href="https://www.facebook.com/Millionaire-Track-109191691604545/"
+                                    <a href="https://www.facebook.com/"
                                         target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/millionairetrackcom/?igshid=YmMyMTA2M2Y="
+                                    <a href="https://www.instagram.com/"
                                         target="_blank"><i class="fab fa-instagram"></i></a>
-                                    <a href="https://www.youtube.com/channel/UCwPvcHQ2iBneNafDlL8aNug" target="_blank">
+                                    <a href="https://www.youtube.com" target="_blank">
                                         <i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
