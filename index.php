@@ -5,6 +5,7 @@
    <meta http-equiv="x-ua-compatible" content="ie=edge">
    <title>Easyearn</title>
    <meta name="description" content="">
+   <meta name="author" content="Easyearn">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- Place logo.png in the root directory -->
    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png">
@@ -603,11 +604,10 @@
                      <div class="browser-course-content">
                         <span>Start from today</span>
                         <div class="browser-course-tittle">
-                           <a href="become-instructor.php">Become an instructor
-                              and spread your knowledge</a>
+                           <a href="/user/register.php">Now Learning and Earning is Easy by Easyearn</a>
                         </div>
                         <div class="browser-btn">
-                           <a class="course-btn" href="become-instructor.php">View details</a>
+                           <a class="course-btn" href="/user/register.php">Start Now</a>
                         </div>
                      </div>
                   </div>
@@ -622,11 +622,11 @@
                            <div class="browser-course-content">
                               <span>Discover your gain</span>
                               <div class="browser-course-tittle">
-                                 <a href="become-affiliate.php">Keep your skilled centers of
+                                 <a href="">Keep your skilled centers of
                                     excellence competitive</a>
                               </div>
                               <div class="browser-btn">
-                                 <a class="course-btn" href="become-affiliate.php">View Details</a>
+                                 <a class="course-btn" href="courses.php">View Details</a>
                               </div>
                            </div>
                         </div>
