@@ -241,7 +241,7 @@
                                         <div class="form-icon position-relative">
                                             <input name="address" id="referalLink" type="text" class="form-control ps-5"
                                                 placeholder="Address :"
-                                                value="https://millionairetrack.com/user/register.php?sponsor=MT190713">
+                                                value="https://easyearn.in/user/register.php?sponsor=MT190713">
                                         </div>
                                     </div>
                                     <div class="mt-md-4 mt-3 mt-sm-0">

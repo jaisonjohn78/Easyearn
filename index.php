@@ -95,16 +95,16 @@
                               <ul>
                                  <li class="menu-item"><a href="index.html">Home</a>
                                  </li>
-                                 <li class="menu-item"><a href="courses.php">Course</a>
-                                 </li>
+                                 <!-- <li class="menu-item"><a href="courses.php">Course</a>
+                                 </li> -->
                                  <li class="menu-item"><a href="about.php">About US</a>
                                  </li>
                                  <li class="menu-item"><a href="contact.php">Contact US</a>
                                  </li>
-                                 <li class="menu-item"><a href="user/index.php">Login</a>
+                                 <!-- <li class="menu-item"><a href="user/index.php">Login</a>
                                  </li>
                                  <li class="menu-item"><a href="user/register.php">Enroll Now</a>
-                                 </li>
+                                 </li> -->
                               </ul>
                               
                            </nav>
@@ -193,23 +193,22 @@
             <div class="row">
                <div class="col-xl-12 col-lg-12 f-center">
                   <div class="section-title mb-50 text-center">
-                     <h2>Discover<br>
-                        In Demand <span class="down-mark-line">Courses</span></h2>
+                     <h2>Top <span class="down-mark-line">Packages</span></h2>
                   </div>
                </div>
             </div>
             <div class="row grid course-main-items">
-                <div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
+                <div class="col-xl-4 col-lg-4 col-md-6 grid-item c-2">
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=0"><img src="admin@millionairetrack/images/course1657015785.png"
+                          <a href="user/register.php?package=0"><img src="admin@millionairetrack/images/Package1646364123.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
                           <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=0">Lead Generation Mastery</a>
-                             </h5>
+                             <h2><a href="user/register.php?package=0">Elite Package</a>
+                             </h2>
                           </div>
                           <div class="eduman-course-meta">
                              <div class="eduman-course-price">
@@ -224,17 +223,17 @@
                           </div>
                        </div>
                     </div>
-                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
+                 </div><div class="col-xl-4 col-lg-4 col-md-6 grid-item c-2">
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=1"><img src="admin@millionairetrack/images/course1655239068.png"
+                          <a href="user/register.php?package=1"><img src="admin@millionairetrack/images/Package1646364204.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
                           <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=1">Email Marketing</a>
-                             </h5>
+                             <h2><a href="user/register.php?package=1">Silver Package</a>
+                             </h2>
                           </div>
                           <div class="eduman-course-meta">
                              <div class="eduman-course-price">
@@ -249,17 +248,17 @@
                           </div>
                        </div>
                     </div>
-                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
+                 </div><div class="col-xl-4 col-lg-4 col-md-6 grid-item c-2">
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=1"><img src="admin@millionairetrack/images/course1653214935.png"
+                          <a href="user/register.php?package=1"><img src="admin@millionairetrack/images/Package1646364247.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
                           <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=1">Wordpress Development</a>
-                             </h5>
+                             <h2><a href="user/register.php?package=1">Gold Package</a>
+                             </h2>
                           </div>
                           <div class="eduman-course-meta">
                              <div class="eduman-course-price">
@@ -274,32 +273,8 @@
                           </div>
                        </div>
                     </div>
-                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
-                    <div class="eduman-course-main-wrapper mb-30">
-                      
-                       <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=12"><img src="admin@millionairetrack/images/course1653069060.png"
-                                alt="course-img"></a>
-                       </div>
-                       <div class="eduman-course-wraper">
-                          <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=12">Stock Marketing</a>
-                             </h5>
-                          </div>
-                          <div class="eduman-course-meta">
-                             <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
-                             </div>
-                          </div>
-                       </div>
-                       <div class="eduman-course-footer">
-                          <div class="course-deteals-btn">
-                             <a href="user/register.php?package=12"><span class="me-2">Get Started</span><i
-                                   class="far fa-arrow-right"></i></a>
-                          </div>
-                       </div>
-                    </div>
-                 </div>            </div>
+                 </div>
+                            </div>
          </div>
       </section>
       <!-- portfolio main area end -->
@@ -788,9 +763,8 @@
                               plans to knowledge.</p>
                         </div>
                         <div class="footer-icon">
-                           <a href="https://www.facebook.com/Millionaire-Track-109191691604545/" target = "_blank"><i class="fab fa-facebook-f"></i></a>
-                           <a href="https://www.instagram.com/millionairetrackcom/?igshid=YmMyMTA2M2Y=" target = "_blank"><i class="fab fa-instagram"></i></a>
-                           <a href="https://www.youtube.com/channel/UCwPvcHQ2iBneNafDlL8aNug" target = "_blank"> <i class="fab fa-youtube"></i></a>
+                           
+                           <a href="https://youtube.com/channel/UC6OjJGHT8OV1G2fxzaD46LA" target = "_blank"> <i class="fab fa-youtube"></i></a>
                         </div>
                      </div>
                   </div>

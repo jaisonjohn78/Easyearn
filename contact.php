@@ -514,11 +514,7 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:EjFTYXlhamkgUGF0aCwgU
                                         plans to knowledge.</p>
                                 </div>
                                 <div class="footer-icon">
-                                    <a href="https://www.facebook.com/"
-                                        target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/"
-                                        target="_blank"><i class="fab fa-instagram"></i></a>
-                                    <a href="https://www.youtube.com" target="_blank">
+                                    <a href="https://youtube.com/channel/UC6OjJGHT8OV1G2fxzaD46LA" target="_blank">
                                         <i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>

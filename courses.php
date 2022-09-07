@@ -90,8 +90,8 @@
                               <ul>
                                  <li class="menu-item"><a href="index.php">Home</a>
                                  </li>
-                                 <li class="menu-item"><a href="courses.php">Course</a>
-                                 </li>
+                                 <!-- <li class="menu-item"><a href="courses.php">Course</a>
+                                 </li> -->
                                  <li class="menu-item"><a href="about.php">About US</a>
                                  </li>
                                  <li class="menu-item"><a href="contact.php">Contact US</a>
@@ -369,9 +369,7 @@
                               plans to knowledge.</p>
                         </div>
                         <div class="footer-icon">
-                           <a href="https://www.facebook.com/" target = "_blank"><i class="fab fa-facebook-f"></i></a>
-                           <a href="https://www.instagram.com/" target = "_blank"><i class="fab fa-instagram"></i></a>
-                           <a href="https://www.youtube.com/" target = "_blank"> <i class="fab fa-youtube"></i></a>
+                           <a href="https://youtube.com/channel/UC6OjJGHT8OV1G2fxzaD46LA" target = "_blank"> <i class="fab fa-youtube"></i></a>
                         </div>
                      </div>
                   </div>
