@@ -18,4 +18,7 @@
     // }
 
     $con = mysqli_connect($hostname, $username, $password, $database) or die("Database connection failed");
+    $basr_url = "http://localhost/Peradot/";
+    $my_email = "hardikzz0409@gmail.com";
+    $password = "cnrtxgwyqwmhocpa";
 ?>
