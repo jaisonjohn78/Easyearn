@@ -3,17 +3,90 @@
     ob_start();
     require_once 'config/db.php'; 
     require_once 'config/function.php'; 
-
-    login_user();
-
-    ob_end_flush();
     
     $_GET['authen'] = '';
     if($_GET['authen'] == 'success') {
                         
         $error = "<div style='color:red'> Payment Successfull please login to Visit Dashboard </div>";
-        set_message($error);
+        // set_message($error);
     }
+
+    global $con;
+    $error = "";
+
+    if (isset($_GET['verification'])) {
+        if (mysqli_num_rows(mysqli_query($con, "SELECT * FROM users WHERE code='{$_GET['verification']}'")) > 0) {
+            $query_1 = mysqli_query($con, "UPDATE users SET code='' WHERE code='{$_GET['verification']}'");
+            
+            if ($query_1) {
+        $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;border-radius:10px;'>Account verification has been successfully completed.</p> ";
+                // set_message($error);
+            }
+        } else {
+            header("Location: index.php");
+        }
+    }
+            if (isset($_POST['login_submit']) || $_SERVER['REQUEST_METHOD'] == 'POST') {
+                $username = mysqli_real_escape_string($con, $_POST['username']);
+                $password = mysqli_real_escape_string($con, $_POST['password']);
+
+                if(isset($_GET['authen'])) {
+                    if($_GET['authen'] == 'success') {
+                        $id = $_POST['username'];
+                        $sql = mysqli_query($con, "UPDATE `users` SET `package`='success' WHERE `email`='$username' OR `phone_no`='$username'");
+                    }
+                    
+                }
+        
+        
+                if (empty($username) || empty($password)) {
+                    $error = "<div style='color:red'> Please fill your Credentials </div>";
+                    set_message($error);
+                } else {
+                    $query = "select * from users where phone_no='$username' or email='$username'";
+                    $result = mysqli_query($con, $query);
+        
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $_SESSION['id'] = $row['id'];
+                        $db_pass = $row['password'];
+                        if((md5($password) != $db_pass)) {
+                            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;border-radius:10px;'>Please Enter Valid Password</p> ";
+                        }
+                        elseif ((md5($password) == $db_pass) && empty($row['code'])) {
+                            $pack = $row['package'];
+                            if($pack == '699' || $pack == 699)
+                            {
+                                redirect("https://pmny.in/jIEoN5GXJ7kQ");
+                            }
+                            if($pack == 2250 || $pack == '2250')
+                            {
+                                redirect("https://pmny.in/UI1VYoNLLxbz");
+                            }
+                            if($pack == 3850 || $pack == '3850')
+                            {
+                                redirect("https://pmny.in/Xr1VYhjpCfKz");
+                            }
+                            if($pack == 'success' )
+                            {
+                        ?>
+                        <script>
+                        window.location.href = '../user/dashboard.php';
+                        </script>
+                        <?php
+                        }
+                            $_SESSION['ID'] = $row['id'];
+                            // $_SESSION['email'] = $row['email'];
+                        } else {
+                            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;border-radius:10px;'>First verify your account and try again</p> ";
+                            // set_message($error);
+                        }
+                    } else {
+                        $error = "<div class='alert' style='color:#ff001d;height:50px;border: 2px solid #869ceb;background-color:#ededed;font-weight: bold;font-size: 17px;text-align: center;'>Please enter valid Phone no and Email.</div>";
+                        // set_message($error);
+                    }
+                }
+            }
+            ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,10 +125,7 @@
                                             <h4 class="card-title text-center font-weight-800">Login to your account</h4>  
                                             <hr>
                                             <?php
-                                                if(isset($_SESSION['MESSAGE']))
-                                                {
-                                                    display_message();
-                                                }
+                                                echo $error ;
                                             ?>
                                             <form class="login-form mt-4" action="" method="POST">
                                                 <div class="row">

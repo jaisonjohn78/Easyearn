@@ -86,19 +86,6 @@
                             </ul>
                         </div>
                     </li>
-
-                    <!-- <li class="sidebar-dropdown">
-                        <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Affiliate Panel</a>
-                        <div class="sidebar-submenu">
-                            <ul>
-                                <li><a href="affiliate.php">Dashboard</a></li>
-                                <li><a href="commission-list.php">Commision</a></li>
-                                <li><a href="leaderboard.php">Leaderboard</a></li>
-                                <li><a href="webinar.php">Webinar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href=""><i class="ti ti-home me-2"></i>Setting</a></li> -->
                 </ul>
                 <!-- sidebar-menu  -->
             </div>
@@ -151,79 +138,89 @@
                                 </div>
                             </li>
                         </ul>
-                    </div><div class="row row-cols-xl-4 row-cols-md-2 row-cols-1">
-    <div class="col mt-4">
-        <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
-            <div class="d-flex align-items-center">
-                <div class="icon text-center rounded-pill">
-                    <i class="uil uil-user-circle fs-4 mb-0"></i>
-                </div>
-                <div class="flex-1 ms-3">
-                    <h6 class="mb-0 text-muted">Paackage Enrolled</h6>
-                    <p class="fs-5 text-dark fw-bold mb-0"><span>Elite Package</span></p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <!--end col-->
-    <!--end col-->
-</div>
-<!--end row-->
+                    </div>
+                    <div class="content-wrapper">
+            <div class="container-full">
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="d-flex top_box justify-content-center text-center my-2">
+                                        <h3 class="m-0">Your Reference Code: </h3>
 
-<div class="row">
-    <div class="col-xl-8 col-lg-7 mt-4">
-        <h5 class="mb-0 fw-bold p-3">Enrolled Courses</h5>
-        <div class="row">
-                        <a class="col-md-4" href = "learning-courses.php?course=1679091c5a880faf6fb5e6087eb1b2dc">
-                <div class="card shadow border-0 rounded">
-                    <div class="d-flex align-items-center">
-                        <img src="assets/images/sales.png" class="img-fluid avatar avatar-md-md rounded shadow" alt="">
-                        <h6 class="mb-0 ms-3 me-3">Sales Master Class</h6>
-                    </div>
-                </div>
-            </a>
-                        <a class="col-md-4" href = "learning-courses.php?course=9bf31c7ff062936a96d3c8bd1f8f2ff3">
-                <div class="card shadow border-0 rounded">
-                    <div class="d-flex align-items-center">
-                        <img src="assets/images/lead.png" class="img-fluid avatar avatar-md-md rounded shadow" alt="">
-                        <h6 class="mb-0 ms-3 me-3">Lead Generation Mastery</h6>
-                    </div>
-                </div>
-            </a>
-                    </div>
-    </div>
-    <!--end col-->
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 text-center my-2">
 
-    <div class="col-xl-4 col-lg-5 mt-4 rounded">
-        <div class="card shadow border-0">
-            <div class="p-4 border-bottom row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <img src="assets/images/elite.png" width="100%" />
-                </div>
-            </div>
-            <div class="d-flex justify-content-center m-3">
-            <a href="courses.php" class="btn btn-outline-primary col-md-6">Start Learning</a>
+                                    <h1 class="fw-500 m-0" id="copycode"><?php echo $ref_code ?>
+                                        <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
+                                            onclick="copyElementText()">
+                                        </i>
+
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8" style="margin:auto" ;>
+                            <div class="card vh-auto">
+                                <div class="card-header">
+                                    <h1 class="card-title text-dark fw-500">Reference Code </h1>
+                                </div>
+                                <form action="" method="post">
+                                    <div class="card-body">
+                                        <h5>Enter referral code</h5>
+                                        <h4 class="msg"><?php echo $msg ?></h4>
+                                        <div class="d-flex justify-content-end bg-light rounded p-30 mx-10 my-15">
+                                            <input type="text" class="form-control" name="reference_code"
+                                                placeholder="referral code">
+                                            <input type="submit" class="btn btn-primary" name="refer" value="submit">
+                                        </div>
+                                        <hr>
+
+
+                                    </div>
+
+                                    <h5 style="margin-left:1rem"> Your referral link</h5>
+
+                                    <?php
+                                            $user_id = $_SESSION['id'];
+                                            $query  = mysqli_query($con,"SELECT * FROM `users` WHERE `id`=$user_id");
+                                            $result = mysqli_fetch_assoc($query);
+                                            $ureferral_code = $result['reference_id'];
+                                            $string_url = $base_url.'index/login.php?refer='.$ureferral_code;
+                                            echo "<script>console.log($ureferral_code);</script>";
+                                            ?>
+                                    <div class="d-flex justify-content-end bg-light rounded p-15 mx-5 my-10">
+                                        <input type="text" class="form-control" id="user_ref_code" name="reference_link"
+                                            placeholder="your referral code" value="<?php echo $string_url?>" readonly>
+                                        <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
+                                            style="font-size:2rem;margin-top:.1rem;cursor:pointer" id="copy"
+                                            onclick="myFunction()">
+                                        </i>
+                                        <!-- <input type="submit" class="btn btn-primary" name="refer" value="copy"> -->
+
+                                        <hr>
+
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- /.content -->
             </div>
         </div>
+                </div>
+                
+            </div>
+            
+        </main>
     </div>
-    <!--end col-->
-</div>
-<!--end row-->
-</main>
-<!--End page-content" -->
-</div>
-<!-- page-wrapper -->
-
-<!-- Offcanvas Start -->
-
-            <!-- sidebar-wrapper  -->
-
-            <!-- Start Page Content -->
- 
-        <!-- Offcanvas End -->
         
-        <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
         <script src="assets/js/simplebar.min.js"></script>

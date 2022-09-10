@@ -1,6 +1,6 @@
 <?php
-   require_once 'config/db.php'; 
-   require_once 'config/function.php'; 
+   require_once 'user/config/db.php'; 
+   require_once 'user/config/function.php'; 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;

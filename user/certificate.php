@@ -146,40 +146,79 @@
     <!--end col-->
 
     <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-4">
-        <div class="tab-content rounded-0 shadow-0" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="days7" role="tabpanel" aria-labelledby="all-tab">
-                <div class="table-responsive bg-white shadow rounded p-3">
-                    <table class="table mb-0">
-                        <thead>
-                            <tr>
-                                <th class="border-bottom">S.No</th>
-                                <th class="border-bottom">Course Name</th>
-                                <th class="border-bottom">Last Test Date</th>
-                                <th class="border-bottom">Last Test Result</th>
-                                <th class="border-bottom">Certificate</th>
-                                <th class="border-bottom">Take Test</th>
-                            </tr>
-                        </thead>
+    <div class="content-wrapper">
+            <div class="container-full">
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="d-flex top_box justify-content-center text-center my-2">
+                                        <h3 class="m-0">Your Reference Code: </h3>
 
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Clavin Carlo</td>
-                                <td>Clavin Carlo</td>
-                                <td>07-11-2022</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 text-center my-2">
 
-                <div class="mt-4 d-flex align-items-center justify-content-between">
-                    <div>
-                        <a href="#" class="btn btn-icon btn-sm btn-pills btn-soft-light"><i class="ti ti-arrow-left"></i></a>
-                        <a href="#" class="btn btn-icon btn-sm btn-pills btn-soft-light"><i class="ti ti-arrow-right"></i></a>
+                                    <h1 class="fw-500 m-0" id="copycode"><?php echo "hardik" ?>
+                                        <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
+                                            onclick="copyElementText()">
+                                        </i>
+
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8" style="margin:auto" ;>
+                            <div class="card vh-auto">
+                                <div class="card-header">
+                                    <h1 class="card-title text-dark fw-500">Reference Code </h1>
+                                </div>
+                                <form action="" method="post">
+                                    <div class="card-body">
+                                        <h5>Enter referral code</h5>
+                                        <h4 class="msg"></h4>
+                                        <div class="d-flex justify-content-end bg-light rounded p-30 mx-10 my-15">
+                                            <input type="text" class="form-control" name="reference_code"
+                                                placeholder="referral code">
+                                            <input type="submit" class="btn btn-primary" name="refer" value="submit">
+                                        </div>
+                                        <hr>
+
+
+                                    </div>
+
+                                    <h5 style="margin-left:1rem"> Your referral link</h5>
+
+                                    <?php
+                                            $user_id = $_SESSION['id'];
+                                            $query  = mysqli_query($con,"SELECT * FROM `users` WHERE `id`=$user_id");
+                                            $result = mysqli_fetch_assoc($query);
+                                            $ureferral_code = $result['reference_id'];
+                                            $string_url = $base_url.'index/login.php?refer='.$ureferral_code;
+                                            echo "<script>console.log($ureferral_code);</script>";
+                                            ?>
+                                    <div class="d-flex justify-content-end bg-light rounded p-15 mx-5 my-10">
+                                        <input type="text" class="form-control" id="user_ref_code" name="reference_link"
+                                            placeholder="your referral code" value="<?php echo $string_url?>" readonly>
+                                        <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
+                                            style="font-size:2rem;margin-top:.1rem;cursor:pointer" id="copy"
+                                            onclick="myFunction()">
+                                        </i>
+                                        <!-- <input type="submit" class="btn btn-primary" name="refer" value="copy"> -->
+
+                                        <hr>
+
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
-
-                    <span class="text-muted me-3">Showing 1 - 10 out of 45</span>
-                </div>
+                </section>
+                <!-- /.content -->
             </div>
         </div>
     </div>
