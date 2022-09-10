@@ -21,6 +21,7 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
     $amount = $_POST['amount'];
     
     $code = mysqli_real_escape_string($con, md5(rand()));
+    
     if(empty($username) || empty($email) || empty($password) || empty($cpassword))
     {
         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;

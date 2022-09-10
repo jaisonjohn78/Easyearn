@@ -6,6 +6,7 @@
     if(!isset($_SESSION['ID'])){
         header("location: index.php");
     }
+    $error = "";
     $query = "select * from users where id='$id'";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
@@ -25,6 +26,64 @@
     $img_result1 = mysqli_query($con, $img_query1);
     $img_fetch = mysqli_fetch_assoc($img_result1);
     $img_photo = $img_fetch['profile_photo'];
+
+    if(isset($_POST['buy1']))
+    {
+        $buy1_sql = "UPDATE `package` SET `package_name` = 'Silver Package' , amount = 2250 WHERE `username` = '$username'";
+        $buy1_data = mysqli_query($con, $buy1_sql);
+
+        if($buy1_data){
+            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                            text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
+            ?>
+            <script>
+                window.location.href = "courses.php";
+                </script>
+                <?php
+        }
+        else{
+            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                            text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
+        }
+    }
+    if(isset($_POST['buy2']))
+    {
+        $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
+        $buy1_data = mysqli_query($con, $buy1_sql);
+
+        if($buy1_data){
+            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                            text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
+                            ?>
+                            <script>
+                            window.location.href = "courses.php";
+                            </script>
+                            <?php
+        }
+        else{
+            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                            text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
+        }
+    }
+    if(isset($_POST['buy3']))
+    {
+        $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
+        $buy1_data = mysqli_query($con, $buy1_sql);
+
+        if($buy1_data){
+            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                            text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
+                           ?>
+                           <script>
+                window.location.href = "courses.php";
+                </script>
+                <?php
+        }
+        else{
+            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                            text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -167,8 +226,11 @@
                             </li>
                         </ul>
                     </div>
+                    <?php echo $error ?>
                     <div class="row justify-content-center">
-
+                        <?php
+                            if($package_name == "Elite Package"){
+                        ?>
                         <div class="col-md-4">
                             <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
                                 <img src="../admin@millionairetrack/images/Package1646364123.png"
@@ -180,14 +242,15 @@
                                     </div>
                                     <div class="mt-4">
                                         <a class="btn btn-primary ms-2">Enroll</a>
-                                        <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a>
+                                        <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
                                     </div>
                                     
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="col-md-4">
+                        <form method="POST" action="" enctype="multipart/form-data">
                             <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
                                 <img src="../admin@millionairetrack/images/Package1646364204.png"
                                     class="img-fluid rounded courseImageExtra" alt="" width="260px">
@@ -197,18 +260,153 @@
                                         <h6 class="text-muted mb-0">₹ 1999 </h6>
                                     </div>
                                     <div class="mt-4">
+                                            <div class="mt-4">
+                                                <a class="btn btn-primary ms-2">Enroll</a>
+                                                <input type="submit" class="btn btn-soft-primary ms-2"
+                                                    name="buy1" value="Buy Now"/>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                       
+                        <div class="col-md-4">
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
+                                    <img src="../admin@millionairetrack/images/Package1646364247.png"
+                                        class="img-fluid rounded courseImageExtra" alt="" width="260px">
+                                    <div class="section-title ms-md-4">
+                                        <h5>Gold Package</h5>
+                                        <div class="d-md-flex justify-content-between align-items-center">
+                                            <h6 class="text-muted mb-0">₹ 3500 </h6>
+                                        </div>
+
+                                        <div class="mt-4">
+            
+                                            <div class="mt-4">
+                                                <a class="btn btn-primary ms-2">Enroll</a>
+                                                <input type="submit" class="btn btn-soft-primary ms-2"
+                                                        name="buy2" value="Buy Now"/>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                            <?php
+                                }elseif($package_name == "Silver Package"){
+                            ?>
+                            <div class="col-md-4">
+                                <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
+                                    <img src="../admin@millionairetrack/images/Package1646364123.png"
+                                        class="img-fluid rounded courseImageExtra" alt="" width="260px">
+                                    <div class="section-title ms-md-4">
+                                        <h5>Elite Package</h5>
+                                        <!-- <div class="d-md-flex justify-content-between align-items-center">
+                                            <h6 class="text-muted mb-0">₹ 508 </h6>
+                                        </div> -->
+                                        <div class="mt-4">
+                                            <a class="btn btn-primary ms-2">Enroll</a>
+                                            <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
+                                <img src="../admin@millionairetrack/images/Package1646364204.png"
+                                    class="img-fluid rounded courseImageExtra" alt="" width="260px">
+                                <div class="section-title ms-md-2">
+                                    <h5>Silver Package</h5>
+                                    <div>
+                                        <h6 class="text-muted mb-0">₹ 1999 </h6>
+                                </div>
+                                    <div>
+                                        <h6 class=" mb-0"  style="color:red">₹ 508 </h6>
+                                </div>
+                                    <div>
+                                        <h6 class=" mb-0" style="font-size:20px;">₹ 1491 </h6>
+                                    </div>
+                                    <div class="mt-4">
                                         
                                         <div class="mt-4">
                                             <a class="btn btn-primary ms-2">Enroll</a>
-                                            <a class="btn btn-soft-primary ms-2"
-                                                href="php/upgrade-cashfree-package.php?package=1">Buy Now</a>
+                                            <!-- <a class="btn btn-soft-primary ms-2"
+                                                href="php/upgrade-cashfree-package.php?package=1">Buy Now</a> -->
                                         </div>
                                       
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
+                                    <img src="../admin@millionairetrack/images/Package1646364247.png"
+                                        class="img-fluid rounded courseImageExtra" alt="" width="260px">
+                                    <div class="section-title ms-md-4">
+                                        <h5>Gold Package</h5>
+                                        <div class="d-md-flex justify-content-between align-items-center">
+                                            <h6 class="text-muted mb-0">₹ 3500 </h6>
+                                        </div>
 
+                                        <div class="mt-4">
+            
+                                            <div class="mt-4">
+                                                <a class="btn btn-primary ms-2">Enroll</a>
+                                                <input type="submit" class="btn btn-soft-primary ms-2"
+                                                            name="buy3" value="Buy Now"/>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <?php
+                            }elseif($package_name == "Gold Package"){
+                        ?>
+                        <div class="col-md-4">
+                            <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
+                                <img src="../admin@millionairetrack/images/Package1646364123.png"
+                                    class="img-fluid rounded courseImageExtra" alt="" width="260px">
+                                <div class="section-title ms-md-4">
+                                    <h5>Elite Package</h5>
+                                    <!-- <div class="d-md-flex justify-content-between align-items-center">
+                                        <h6 class="text-muted mb-0">₹ 508 </h6>
+                                    </div> -->
+                                    <div class="mt-4">
+                                        <a class="btn btn-primary ms-2">Enroll</a>
+                                        <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
+                                <img src="../admin@millionairetrack/images/Package1646364204.png"
+                                    class="img-fluid rounded courseImageExtra" alt="" width="260px">
+                                <div class="section-title ms-md-4">
+                                    <h5>Silver Package</h5>
+                                    <!-- <div class="d-md-flex justify-content-between align-items-center">
+                                        <h6 class="text-muted mb-0">₹ 1999 </h6>
+                                    </div> -->
+                                    <div class="mt-4">
+                                        
+                                        <div class="mt-4">
+                                            <a class="btn btn-primary ms-2">Enroll</a>
+                                            <!-- <a class="btn btn-soft-primary ms-2"
+                                                href="php/upgrade-cashfree-package.php?package=1">Buy Now</a> -->
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
                                 <img src="../admin@millionairetrack/images/Package1646364247.png"
@@ -218,19 +416,30 @@
                                     <div class="d-md-flex justify-content-between align-items-center">
                                         <h6 class="text-muted mb-0">₹ 3500 </h6>
                                     </div>
-
+                                    <div>
+                                        <h6 class="mb-0" style="color:red">₹ 1999 </h6>
+                                    </div>
+                                    <div>
+                                        <h6 class=" mb-0"  style="color:red">₹ 508 </h6>
+                                    </div>
+                                    <div>
+                                        <h6 class=" mb-0" style="font-size:20px;">₹ 2009 </h6>
+                                    </div>
                                     <div class="mt-4">
         
                                         <div class="mt-4">
                                             <a class="btn btn-primary ms-2">Enroll</a>
-                                            <a class="btn btn-soft-primary ms-2"
-                                                href="php/upgrade-cashfree-package.php?package=1">Buy Now</a>
+                                            <!-- <a class="btn btn-soft-primary ms-2"
+                                                href="php/upgrade-cashfree-package.php?package=1">Buy Now</a> -->
                                         </div>
                                         
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <?php 
+                            } 
+                        ?>
                     </div>
                     <h5 class="mb-0 fw-bold p-3">Courses in your enrolled Package</h5>
                     <div class="row">
