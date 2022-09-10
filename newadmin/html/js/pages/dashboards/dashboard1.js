@@ -74,7 +74,7 @@ $(function () {
     // ============================================================== 
     // Our visitor
     // ============================================================== 
-
+    
     var chart = c3.generate({
         bindto: '#visitor',
         data: {
@@ -94,7 +94,7 @@ $(function () {
             label: {
                 show: false
             },
-            title: "Our visitor",
+            title: ,
             width: 20,
 
         },
