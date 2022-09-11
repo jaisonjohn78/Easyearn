@@ -3,20 +3,11 @@
     require_once 'config/db.php'; 
     require_once 'config/function.php'; 
     $id = $_SESSION['ID'];
-    if(!isset($_SESSION['ID'])){
-     header("location: index.php");
-    }
     $query = "select * from users where id='$id'";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
 
-    if($row['package'] != 'success'){
-        header("location: index.php");
-    }
-    if($row['status'] == 1){
-        header("location: ../newadmin/html/");
-    }
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
@@ -27,7 +18,6 @@
         $package_name = "Package is not selected!!";
     }
 
-    
     $img_query1 = "select * from users where id=$id ";
     $img_result1 = mysqli_query($con, $img_query1);
     $img_fetch = mysqli_fetch_assoc($img_result1);
@@ -46,14 +36,17 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- simplebar -->
     <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
+
     <!-- Icons -->
     <!-- <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link href="assets/css/tabler-icons.min.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/1.35.0/iconfont/tabler-icons.min.css" referrerpolicy="no-referrer" />
     <link href="assets/css/line.css" rel="stylesheet">
+    <!-- Css -->
     <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" id="theme-opt" />
+
 </head>
 
 <body>
@@ -66,8 +59,8 @@
                         <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt="">
                         <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
                         <span class="sidebar-colored">
-                            <img src="assets/images/logo.png" height="24" style="height: 50px;" alt="">
-                            EASYEARN
+                            <img src="assets/images/logo.png" height="24" alt="" style="height:50px;">
+                            Easyearn
                         </span>
                     </a>
                 </div>
@@ -76,7 +69,6 @@
                     <li><a href="dashboard.php"><i class="ti ti-home me-2"></i>Overview</a></li>
                     <li><a href="courses.php"><i class="ti ti-home me-2"></i>Courses</a></li>
                     <li><a href="certificate.php"><i class="ti ti-home me-2"></i>Certificate</a></li>
-                    <li><a href="reference.php"><i class="ti ti-home me-2"></i>Reference</a></li>
                     <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-user me-2"></i>Profile</a>
                         <div class="sidebar-submenu">
@@ -86,6 +78,18 @@
                             </ul>
                         </div>
                     </li>
+                    <!-- <li class="sidebar-dropdown">
+                        <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Affiliate Panel</a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li><a href="affiliate.php">Dashboard</a></li>
+                                <li><a href="commission-list.php">Commision</a></li>
+                                <li><a href="leaderboard.php">Leaderboard</a></li>
+                                <li><a href="webinar.php">Webinar</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href=""><i class="ti ti-home me-2"></i>Setting</a></li> -->
                 </ul>
                 <!-- sidebar-menu  -->
             </div>
@@ -138,8 +142,11 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                    <div class="content-wrapper">
+                    </div><div class="row g-2">
+    <!--end col-->
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-4">
+    <div class="content-wrapper">
             <div class="container-full">
                 <!-- Main content -->
                 <section class="content">
@@ -154,7 +161,7 @@
                                 </div>
                                 <div class="col-xl-6 text-center my-2">
 
-                                    <h1 class="fw-500 m-0" id="copycode"><?php echo $ref_code ?>
+                                    <h1 class="fw-500 m-0" id="copycode"><?php echo "hardik" ?>
                                         <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
                                             onclick="copyElementText()">
                                         </i>
@@ -171,7 +178,7 @@
                                 <form action="" method="post">
                                     <div class="card-body">
                                         <h5>Enter referral code</h5>
-                                        <h4 class="msg"><?php echo $msg ?></h4>
+                                        <h4 class="msg"></h4>
                                         <div class="d-flex justify-content-end bg-light rounded p-30 mx-10 my-15">
                                             <input type="text" class="form-control" name="reference_code"
                                                 placeholder="referral code">
@@ -214,13 +221,17 @@
                 <!-- /.content -->
             </div>
         </div>
-                </div>
-                
-            </div>
-            
-        </main>
     </div>
+    <!--end col-->
+</div>
+
+            <!-- sidebar-wrapper  -->
+
+            <!-- Start Page Content -->
+ 
+        <!-- Offcanvas End -->
         
+        <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
         <script src="assets/js/simplebar.min.js"></script>

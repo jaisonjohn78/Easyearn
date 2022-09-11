@@ -11,6 +11,16 @@
   $user_fetch = mysqli_fetch_assoc($user_result);
   $img_photo = $user_fetch['profile_photo'];
   $username = $user_fetch['username'];
+
+  $package_query = "select count(id) AS id from package";
+  $package_result = mysqli_query($con, $package_query);
+  $package_row = mysqli_fetch_assoc($package_result);
+  $total_package = $package_row['id'];
+
+  $silver_query = "select count(id) AS id from package WHERE package_name = 'Silver Package'";
+  $silver_result = mysqli_query($con, $silver_query);
+  $silver_row = mysqli_fetch_assoc($silver_result);
+  $silver_total_package = $silver_row['id'];
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -381,7 +391,7 @@
             <div class="col-lg-4">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title">Total amount</h3>
+                  <h3 class="card-title">Total Packages</h3>
                   <h6 class="card-subtitle">Different Devices Used to Visit</h6>
                   <div
                     id="visitor"
@@ -499,7 +509,122 @@
     <script src="../assets/plugins/d3/d3.min.js"></script>
     <script src="../assets/plugins/c3-master/c3.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="js/pages/dashboards/dashboard1.js"></script>
+    <!-- <script src="js/pages/dashboards/dashboard1.js"></script> -->
     <script src="js/custom.js"></script>
+    <script type="text/javascript"></script>
+    <script>
+      /*
+Template Name: Admin Pro Admin
+Author: Wrappixel
+Email: niravjoshi87@gmail.com
+File: js
+*/
+$(function () {
+    "use strict";
+
+    // ============================================================== 
+    // Sales overview
+    // ============================================================== 
+    var chart2 = new Chartist.Bar('.amp-pxl', {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        series: [
+            [9, 5, 3, 7, 5, 10, 3],
+            [6, 3, 9, 5, 4, 6, 4]
+        ]
+    }, {
+        axisX: {
+            // On the x-axis start means top and end means bottom
+            position: 'end',
+            showGrid: false
+        },
+        axisY: {
+            // On the y-axis start means left and end means right
+            position: 'start'
+        },
+        high: '12',
+        low: '0',
+        plugins: [
+            Chartist.plugins.tooltip()
+        ]
+    });
+
+    var chart = [chart2];
+
+    // ============================================================== 
+    // This is for the animation
+    // ==============================================================
+
+    for (var i = 0; i < chart.length; i++) {
+        chart[i].on('draw', function (data) {
+            if (data.type === 'line' || data.type === 'area') {
+                data.element.animate({
+                    d: {
+                        begin: 500 * data.index,
+                        dur: 500,
+                        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                        to: data.path.clone().stringify(),
+                        easing: Chartist.Svg.Easing.easeInOutElastic
+                    }
+                });
+            }
+            if (data.type === 'bar') {
+                data.element.animate({
+                    y2: {
+                        dur: 500,
+                        from: data.y1,
+                        to: data.y2,
+                        easing: Chartist.Svg.Easing.easeInOutElastic
+                    },
+                    opacity: {
+                        dur: 500,
+                        from: 0,
+                        to: 1,
+                        easing: Chartist.Svg.Easing.easeInOutElastic
+                    }
+                });
+            }
+        });
+    }
+
+    // ============================================================== 
+    // Our visitor
+    // ============================================================== 
+    
+    var chart = c3.generate({
+        bindto: '#visitor',
+        data: {
+            columns: [
+                ['Other', 4],
+                ['Desktop', 10],
+                ['Tablet', 40],
+                ['Mobile', 50],
+            ],
+
+            type: 'donut',
+            onclick: function (d, i) { console.log("onclick", d, i); },
+            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        },
+        donut: {
+            label: {
+                show: false
+            },
+            title: "Total Packages: " + <?php echo $total_package ?>,
+            width: 20,
+
+        },
+
+        legend: {
+            hide: true
+            //or hide: 'data1'
+            //or hide: ['data1', 'data2']
+        },
+        color: {
+            pattern: ['#eceff1', '#745af2', '#26c6da', '#1e88e5']
+        }
+    });
+
+});
+      </script>
   </body>
 </html>
