@@ -51,7 +51,14 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                         $hash = md5($password);
                         date_default_timezone_set('Asia/Kolkata');
                         $datetime = date("F j, Y g:i:s a");
-                        $sql = "INSERT INTO users(username,email, phone_no, password, package,code) VALUES('$username','$email','$phone', '$hash', '$amount','$code')";
+                        function random_strings($length_of_string) 
+                        { 
+                            $str_result = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz'; 
+                            return substr(str_shuffle($str_result), 0, $length_of_string); 
+                        } 
+                        $refer_code =  random_strings(8);
+                         
+                        $sql = "INSERT INTO users(username,email, phone_no, password, package,code,refer_code) VALUES('$username','$email','$phone', '$hash', '$amount','$code','$refer_code')";
                         $data = mysqli_query($con, $sql);
                         $package_sql = "INSERT INTO package(username,package_name,amount) VALUES('$username','$package','$amount')";
                         $package_data = mysqli_query($con, $package_sql);
@@ -502,18 +509,31 @@ ob_end_flush();
             'Elite Package':'508','Silver Package':'1999','Gold Package':'3500',        };
         let packageExtra = {
             'Elite Package':'699','Silver Package':'2250','Gold Package':'3850',        };
-        function fetchName(data){
-            fetch('php/fetchname.php?mtid='+data)
-  .then(response => response.json())
-  .then(data => {
-      if(typeof(data.error) =='undefined'){
-          document.getElementById('sponsor').value = data[0].name;
-      }
-      else{
-        document.getElementById('sponsor').value = '';
-      }
-  });
+//         function fetchName(data){
+//             fetch('php/fetchname.php?mtid='+data)
+//   .then(response => response.json())
+//   .then(data => {
+//       if(typeof(data.error) =='undefined'){
+//           document.getElementById('sponsor').value = data[0].name;
+//       }
+//       else{
+//         document.getElementById('sponsor').value = '';
+//       }
+//   });
+        // }
 
+        const urlParams = new URLSearchParams(window.location.search);
+        let packSelect = urlParams.get('package');
+        // console.log(packSelect);
+        if(packSelect == 0 || packSelect =='0' ) {
+            document.querySelector('option[value="Elite Package"]').selected = true;
+            updatePrice('Elite Package');
+        } else if(packSelect == 1 || packSelect =='1') {
+            document.querySelector('option[value="Silver Package"]').selected = true;
+            updatePrice('Silver Package');
+        } else if(packSelect == 2 || packSelect =='2') {
+            document.querySelector('option[value="Gold Package"]').selected = true;
+            updatePrice('Gold Package');
         }
                 function submitForm(e){
             var val = document.getElementById('sponsor').value;

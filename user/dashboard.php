@@ -63,8 +63,8 @@
             <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
                 <div class="sidebar-brand">
                     <a href="logout.php">
-                        <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt="">
-                        <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
+                        <img src="assets/images/logo.png" height="24" class="logo-light-mode" alt="">
+                        <img src="assets/images/logo.png" height="24" class="logo-dark-mode" alt="">
                         <span class="sidebar-colored">
                             <img src="assets/images/logo.png" height="24" style="height: 50px;" alt="">
                             EASYEARN
@@ -117,7 +117,7 @@
                         <i class="ti ti-menu-2"></i>
                     </a>
                     <a href="#" class="logo-icon me-3 top-header-extra">
-                        <img src="assets/images/logo-icon.png" height="30" class="small" alt="">
+                        <img src="assets/images/logo.png" height="38" class="small" alt="">
                     </a>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                                             <img src="image/<?php echo $img_photo ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block"><?php echo $username ?></span>
-                                                <small class="text-muted">MT190713</small>
+                                                <small class="text-muted">EE190713</small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span> Package: <?php echo $package_name ?></a>
