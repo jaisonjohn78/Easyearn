@@ -1,14 +1,14 @@
 <?php
 ob_start();
-require_once 'config/db.php'; 
-require_once 'config/function.php'; 
+    require_once 'config/db.php'; 
+    require_once 'config/function.php'; 
 
-global $con;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-require '.././vendor/autoload.php';
-$error = "";
+    global $con;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    require '.././vendor/autoload.php';
+    $error = "";
 // $code = mysqli_real_escape_string($con, md5(rand()));
 if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
 {

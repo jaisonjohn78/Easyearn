@@ -20,6 +20,7 @@
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
+    $selected_package = $package_row['package_name'];
     if($package_row){
     $package_name = $package_row['package_name'];
     }
@@ -160,7 +161,7 @@
                 </div>
                 <div class="flex-1 ms-3">
                     <h6 class="mb-0 text-muted">Paackage Enrolled</h6>
-                    <p class="fs-5 text-dark fw-bold mb-0"><span>Elite Package</span></p>
+                    <p class="fs-5 text-dark fw-bold mb-0"><span><?php echo $selected_package ?></span></p>
                 </div>
             </div>
         </a>

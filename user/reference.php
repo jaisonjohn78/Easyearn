@@ -22,6 +22,14 @@
     $img_result1 = mysqli_query($con, $img_query1);
     $img_fetch = mysqli_fetch_assoc($img_result1);
     $img_photo = $img_fetch['profile_photo'];
+    $ref_code = $img_fetch['refer_code'];
+
+    if(isset($_POST['refer']) ) {
+        $post_code = $_POST['reference_code'];
+        $user_code = $id;
+        $verify = mysqli_query($con,"INSERT INTO `reference`(`user_id`, `code`) VALUES ('$user_code','$post_code')");
+        
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +169,7 @@
                                 </div>
                                 <div class="col-xl-6 text-center my-2">
 
-                                    <h1 class="fw-500 m-0" id="copycode"><?php echo "hardik" ?>
+                                    <h1 class="fw-500 m-0" id="copycode"><?php echo $ref_code ?>
                                         <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
                                             onclick="copyElementText()">
                                         </i>
@@ -195,7 +203,7 @@
                                             $user_id = $_SESSION['id'];
                                             $query  = mysqli_query($con,"SELECT * FROM `users` WHERE `id`=$user_id");
                                             $result = mysqli_fetch_assoc($query);
-                                            $ureferral_code = $result['reference_id'];
+                                            $ureferral_code = $result['refer_code'];
                                             $string_url = $base_url.'index/login.php?refer='.$ureferral_code;
                                             echo "<script>console.log($ureferral_code);</script>";
                                             ?>

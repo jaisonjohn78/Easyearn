@@ -324,12 +324,12 @@
                                     <div>
                                         <h6 class="text-muted mb-0">₹ 1999 </h6>
                                 </div>
-                                    <div>
+                                    <!-- <div>
                                         <h6 class=" mb-0"  style="color:red">₹ 508 </h6>
                                 </div>
                                     <div>
                                         <h6 class=" mb-0" style="font-size:20px;">₹ 1491 </h6>
-                                    </div>
+                                    </div> -->
                                     <div class="mt-4">
                                         
                                         <div class="mt-4">
@@ -416,7 +416,7 @@
                                     <div class="d-md-flex justify-content-between align-items-center">
                                         <h6 class="text-muted mb-0">₹ 3500 </h6>
                                     </div>
-                                    <div>
+                                    <!-- <div>
                                         <h6 class="mb-0" style="color:red">₹ 1999 </h6>
                                     </div>
                                     <div>
@@ -424,7 +424,7 @@
                                     </div>
                                     <div>
                                         <h6 class=" mb-0" style="font-size:20px;">₹ 2009 </h6>
-                                    </div>
+                                    </div> -->
                                     <div class="mt-4">
         
                                         <div class="mt-4">
