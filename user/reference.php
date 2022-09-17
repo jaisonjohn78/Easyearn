@@ -3,11 +3,13 @@
     require_once 'config/db.php'; 
     require_once 'config/function.php'; 
     $id = $_SESSION['ID'];
-    $query = "select * from users where id='$id'";
+    $msg="";
+    $query = "select * from users where id=$id";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
-
+    $ref_code = $row['reference_id'];
+ 
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
@@ -22,13 +24,54 @@
     $img_result1 = mysqli_query($con, $img_query1);
     $img_fetch = mysqli_fetch_assoc($img_result1);
     $img_photo = $img_fetch['profile_photo'];
-    $ref_code = $img_fetch['refer_code'];
+    
+    if(isset($_POST['refer'])){
+        $reference_code = trim($_POST['reference_code']);
+        $today = date("F j, Y, g:i a"); 
 
-    if(isset($_POST['refer']) ) {
-        $post_code = $_POST['reference_code'];
-        $user_code = $id;
-        $verify = mysqli_query($con,"INSERT INTO `reference`(`user_id`, `code`) VALUES ('$user_code','$post_code')");
-        
+        $sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
+        $result =mysqli_fetch_assoc($sql);
+        $refered_by=$result['username'];
+        $userid = $_SESSION['id'];
+        $query = "SELECT * FROM `users` WHERE `id`=$userid";
+        $result_query = mysqli_query($con,$query);
+        $result = mysqli_fetch_assoc($result_query);
+        $username = $result['username'];
+        // $total_balance = $result['amount'];
+        $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `user_id` = '$id' AND `reference_id` = '$reference_code'");
+        if(mysqli_num_rows($sql)){
+            if(mysqli_num_rows($sql1) == 0){
+              if($reference_code != $ref_code){
+                mysqli_query($con,"INSERT INTO `reference`(`user_id`,`username`,`refered_by`,`reference_id`,`timestamp`) VALUES ('$id','$username','$refered_by','$reference_code','$today')");
+                // $ref_profit = ($total_balance*10)/100;
+                // $new_total_balance = $total_balance + $ref_profit;
+                $check_users = mysqli_query($con,"SELECT * from `reference` WHERE `username` = '$refered_by'");
+                $old_amount_query = mysqli_query($con,"SELECT * from `users` WHERE `username` = '$refered_by'");
+                $old_amount_result =mysqli_fetch_assoc($old_amount_query);
+                $old_amount = $old_amount_result['amount'];
+                if(mysqli_num_rows($check_users) == 0){
+                    mysqli_query($con,"UPDATE users SET amount = $old_amount + 400 where reference_id = '$reference_code'");
+                    $msg = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;'>Inserted!!!</p>";
+                }
+                else{
+                    mysqli_query($con,"UPDATE users SET amount = $old_amount + 100 where reference_id = '$reference_code'");
+                    $msg = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;'>Inserted!!!</p>";
+                }
+              }
+              else{
+                $msg = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;
+                text-align:center;'>You can not use your reference code</p>";
+              }
+            }
+        else{
+            $msg = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+            text-align:center;'>Already exist</p>";
+        }
+    }
+        else{
+            $msg ="<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+            text-align:center;'>Please Enter Valid Reference Code!!!</p>";
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -169,22 +212,25 @@
                                 </div>
                                 <div class="col-xl-6 text-center my-2">
 
-                                    <h1 class="fw-500 m-0" id="copycode"><?php echo $ref_code ?>
-                                        <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box"
+                                    <h1 class="fw-500 m-0" id="copycode">
+                                        <?php echo $ref_code ?>
+                                        <i class="mx-3 mdi mdi-checkbox-multiple-blank-outline btn-rounded btn-success down_box" 
                                             onclick="copyElementText()">
                                         </i>
 
                                     </h1>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-8" style="margin:auto" ;>
+            </div>
+                       <div class="col-xl-8" style="margin:auto" ;>
                             <div class="card vh-auto">
                                 <div class="card-header">
                                     <h1 class="card-title text-dark fw-500">Reference Code </h1>
                                 </div>
                                 <form action="" method="post">
+                                    
                                     <div class="card-body">
+                                    <?php echo $msg ?>
                                         <h5>Enter referral code</h5>
                                         <h4 class="msg"></h4>
                                         <div class="d-flex justify-content-end bg-light rounded p-30 mx-10 my-15">
@@ -203,8 +249,8 @@
                                             $user_id = $_SESSION['id'];
                                             $query  = mysqli_query($con,"SELECT * FROM `users` WHERE `id`=$user_id");
                                             $result = mysqli_fetch_assoc($query);
-                                            $ureferral_code = $result['refer_code'];
-                                            $string_url = $base_url.'index/login.php?refer='.$ureferral_code;
+                                            $ureferral_code = $result['reference_id'];
+                                            $string_url = $base_url.'user/register.php?refer='.$ureferral_code;
                                             echo "<script>console.log($ureferral_code);</script>";
                                             ?>
                                     <div class="d-flex justify-content-end bg-light rounded p-15 mx-5 my-10">
@@ -238,7 +284,34 @@
             <!-- Start Page Content -->
  
         <!-- Offcanvas End -->
-        
+        <script>
+            function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("user_ref_code");
+
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+
+        function copyElementText() {
+            var text = document.getElementById("copycode").innerText;
+            var elem = document.createElement("textarea");
+            document.body.appendChild(elem);
+            elem.value = text;
+            elem.select();
+            document.execCommand("copy");
+            document.body.removeChild(elem);
+            alert("copied code: " + text);
+        }
+        </script>
         <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
