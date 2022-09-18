@@ -1,16 +1,21 @@
 <?php
 ob_start();
-require_once 'config/db.php'; 
-require_once 'config/function.php'; 
+    require_once 'config/db.php'; 
+    require_once 'config/function.php'; 
+    global $con;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    require '.././vendor/autoload.php';
+    $error = "";
 
-global $con;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-require '.././vendor/autoload.php';
-$error = "";
+    $reference_code = $_GET['refer'];
+
+    $user_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
+    $user_result =mysqli_fetch_assoc($user_sql);
+    $refered_by=$user_result['username'];
 // $code = mysqli_real_escape_string($con, md5(rand()));
-if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
+function register_func()
 {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -21,7 +26,7 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
     $amount = $_POST['amount'];
     
     $code = mysqli_real_escape_string($con, md5(rand()));
-    
+
     if(empty($username) || empty($email) || empty($password) || empty($cpassword))
     {
         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
@@ -58,28 +63,17 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                         } 
                         $refer_code =  random_strings(8);
                          
-                        $sql = "INSERT INTO users(username,email, phone_no, password, package,code,refer_code) VALUES('$username','$email','$phone', '$hash', '$amount','$code','$refer_code')";
+                        $sql = "INSERT INTO users(username,email, phone_no, password, package,code,reference_id) VALUES('$username','$email','$phone', '$hash', '$amount','$code','$refer_code')";
                         $data = mysqli_query($con, $sql);
                         $package_sql = "INSERT INTO package(username,package_name,amount) VALUES('$username','$package','$amount')";
                         $package_data = mysqli_query($con, $package_sql);
-                        // if ($data) 
-                        // {
-                        //     $error = "<div  class='alert' style='color:#ff001d;height:50px;border: 2px solid #869ceb;background-color:#ededed;font-weight: bold;font-size: 20px;text-align: center;'> Registered Succesfully !! </div>";
-                        //     set_message($error);
-                        //     $user_query = "select username from users where email='$email'";
-                        //             $user_result = mysqli_query($con,$user_query);
-                        //             if($user_row=mysqli_fetch_assoc($user_result))
-                        //             {
-                        //             $user_name = $user_row['username'];
-                                    
-                        //             }
-                        // }
-                        if($data) 
+
+                        
+                        if($data)
                         {
                             echo "<div style='display: none;'>";
                             //Create an instance; passing `true` enables exceptions
                             $mail = new PHPMailer(true);
-        
                             try 
                             {
                                 //Server settings
@@ -304,6 +298,7 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                                 $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
                                 text-align:center;border-radius:10px;'>Successfully Registered </p>";
                                
+                                
                             } 
                             catch (Exception $e) {
                                 $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
@@ -311,6 +306,43 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                                 // alert("Message could not be sent. Mailer Error: { $mail->ErrorInfo }");
                             }
                             echo "</div>";
+                            $today = date("F j, Y, g:i a"); 
+
+                            $get_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
+                            $get_result =mysqli_fetch_assoc($get_sql);
+                            $refered_by=$get_result['username'];
+                            $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `username` = '$username' AND `reference_id` = '$reference_code'");
+                            if(mysqli_num_rows($get_sql)){
+                                if(mysqli_num_rows($sql1) == 0){
+                                  if($reference_code != $refer_code){
+                                    mysqli_query($con,"INSERT INTO `reference`(`username`,`refered_by`,`reference_id`,`timestamp`) VALUES ('$username','$refered_by','$reference_code','$today')");
+                                    $check_users = mysqli_query($con,"SELECT * from `reference` WHERE `username` = '$refered_by'");
+                                    $old_amount_query = mysqli_query($con,"SELECT * from `users` WHERE `username` = '$refered_by'");
+                                    $old_amount_result =mysqli_fetch_assoc($old_amount_query);
+                                    $old_amount = $old_amount_result['amount'];
+                                    if(mysqli_num_rows($check_users) == 0){
+                                        mysqli_query($con,"UPDATE users SET amount = $old_amount + 400 where reference_id = '$reference_code'");
+                                        $error = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;'>Inserted!!!</p>";
+                                    }
+                                    else{
+                                        mysqli_query($con,"UPDATE users SET amount = $old_amount + 100 where reference_id = '$reference_code'");
+                                        $error = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;'>Inserted!!!</p>";
+                                    }
+                                  }
+                                  else{
+                                    $error = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;
+                                    text-align:center;'>You can not use your reference code</p>";
+                                  }
+                                }
+                                else{
+                                    $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                                    text-align:center;'>Already exist</p>";
+                                }
+                            }
+                            else{
+                                $error ="<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+                                text-align:center;'>Please Enter Valid Reference Code!!!</p>";
+                            }
                             $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
                             text-align:center;border-radius:10px;'>We've send a verification link on your email address \n(Check your spam if not found ).</p>";
                             
@@ -321,7 +353,7 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                             text-align:center;border-radius:10px;'>Something went wrong</p>";
                             // alert("Something went wrong");
                         }
-                    }
+            }
         }
     }
 }
@@ -381,7 +413,7 @@ ob_end_flush();
                                                             <label class="form-label">Your Name <span class="text-danger">*</span></label>
                                                             <div class="form-icon position-relative">
                                                                 <i data-feather="user" class="fea icon-sm icons"></i>
-                                                                <input type="text" class="form-control ps-5" placeholder="Name" name="username" required="" value="">
+                                                                <input type="text" class="form-control ps-5" placeholder="Name" id="username" name="username" required="" value="">
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
@@ -411,7 +443,7 @@ ob_end_flush();
                                                             <label class="form-label">Referal Code <span class="text-danger">*</span></label>
                                                             <div class="form-icon position-relative">
                                                                 <i data-feather="user" class="fea icon-sm icons"></i>
-                                                                <input type="text" class="form-control ps-5" placeholder="Referal Code" name="sponsorId" value = ""onchange="fetchName(this.value)">
+                                                                <input type="text" class="form-control ps-5" placeholder="Referal Code" name="sponsorId" value = "<?php echo $reference_code?>" onchange="fetchName(this.value)" disabled>
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
@@ -421,7 +453,7 @@ ob_end_flush();
                                                             <label class="form-label">Referal User Name <span class="text-danger">*</span></label>
                                                             <div class="form-icon position-relative">
                                                                 <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                                                <input id = "sponsor" type="text" class="form-control ps-5" placeholder="Referal User Name" name="sponsorName"  readonly>
+                                                                <input id = "sponsor" type="text" class="form-control ps-5" placeholder="Referal User Name" name="sponsorName" value="<?php echo $refered_by ?>" disabled>
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
@@ -431,7 +463,7 @@ ob_end_flush();
                                                             <label class="form-label">Select Package <span class="text-danger">*</span></label>
                                                             <div class="form-icon position-relative">
                                                                 <i data-feather="package" class="fea icon-sm icons"></i>
-                                                                <select name = "package" class="form-control ps-5" required onchange="updatePrice(this.value)">
+                                                                <select name = "package" class="form-control ps-5" required onchange="updatePrice(this.value)" id="package_name">
                                                                     <option selected disabled value="">Select Package</option>
                                                                     <option value="Elite Package">Elite Package</option>
                                                                     <option value="Silver Package">Silver Package</option>
@@ -445,7 +477,7 @@ ob_end_flush();
                                                             <label class="form-label">Amount <span class="text-danger">*</span></label>
                                                             <div class="form-icon position-relative">
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"  class="feather feather-user fea icon-sm icons"><path d="M.0022 64C.0022 46.33 14.33 32 32 32H288C305.7 32 320 46.33 320 64C320 81.67 305.7 96 288 96H231.8C241.4 110.4 248.5 126.6 252.4 144H288C305.7 144 320 158.3 320 176C320 193.7 305.7 208 288 208H252.4C239.2 266.3 190.5 311.2 130.3 318.9L274.6 421.1C288.1 432.2 292.3 452.2 282 466.6C271.8 480.1 251.8 484.3 237.4 474L13.4 314C2.083 305.1-2.716 291.5 1.529 278.2C5.774 264.1 18.09 256 32 256H112C144.8 256 173 236.3 185.3 208H32C14.33 208 .0022 193.7 .0022 176C.0022 158.3 14.33 144 32 144H185.3C173 115.7 144.8 96 112 96H32C14.33 96 .0022 81.67 .0022 64V64z"/></svg>
-                                                                <input type="text" class="form-control ps-5" placeholder="Amount" name="amount" required="" readonly>
+                                                                <input type="text" class="form-control ps-5" placeholder="Amount" name="amount" required="" readonly id="amt">
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
@@ -481,7 +513,8 @@ ob_end_flush();
 
                                                     <div class="col-md-12">
                                                         <div class="d-grid">
-                                                            <button class="btn btn-primary" type="submit" name="submit">Register</button>
+                                                            <button class="btn btn-info " onclick="pay_now()">Pay Now</button>
+                                                            <button class="btn btn-primary d-none" type="submit" name="submit" >Register</button>
                                                         </div>
                                                     </div><!--end col-->
 
@@ -504,9 +537,11 @@ ob_end_flush();
         <!-- Hero End -->
         
         <!-- javascript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script> 
         let package = {
-            'Elite Package':'508','Silver Package':'1999','Gold Package':'3500',        };
+            'Elite Package':'1','Silver Package':'1999','Gold Package':'3500',        };
         let packageExtra = {
             'Elite Package':'699','Silver Package':'2250','Gold Package':'3850',        };
 //         function fetchName(data){
@@ -550,6 +585,43 @@ ob_end_flush();
                    document.getElementsByName('amount')[0].value = package[data];
                }
            }
+
+        function pay_now(){
+        var package_name=jQuery('#package_name').val();
+        var amt=jQuery('#amt').val();
+        var username=jQuery('#username').val();
+        // console.log(package_name);
+        // console.log(amt);
+         jQuery.ajax({
+               type:'post',
+               url:'payment_process.php',
+               data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+               success:function(result){
+                   var options = {
+                        "key": "rzp_live_UhvoCF0admOUso", 
+                        "amount": amt*100, 
+                        "currency": "INR",
+                        "name": "Easyearn",
+                        "description": "Test Transaction",
+                        "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                        "handler": function (response){
+                           jQuery.ajax({
+                               type:'post',
+                               url:'payment_process.php',
+                               data:"payment_id="+response.razorpay_payment_id,
+                               success:function(result){
+                                    register();
+                                   window.location.href="register.php?auth=success";
+                               }
+                           });
+                        console.log(response);
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+               }
+           });
+    }
                    </script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
@@ -559,8 +631,5 @@ ob_end_flush();
         <!-- Main Js -->
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
-        
     </body>
-
-
 </html>
