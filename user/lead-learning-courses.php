@@ -201,7 +201,7 @@
                             <div class="lecture">
                                 <span class="lecture-heading">Lecture Video</span>
                                 <?php
-                                        $lecture_query =$con->query("select * from videos where category = 'Sales Master Class'");
+                                        $lecture_query =$con->query("select * from videos where category = 'Lead Generation Mastery'");
                                         if(mysqli_num_rows($lecture_query)>0){
                                         while($lecture_row = $lecture_query->fetch_assoc()){
                                           $lecture_title = $lecture_row['lecture_title'];

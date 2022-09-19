@@ -21,20 +21,20 @@
     $video_id = $_POST['video_id'];
     $video_title = $_POST['title'];
     $video_link = $_POST['video_link'];
-
-      if(empty($video_id) || empty($video_title) || empty($video_link))
+    $category = $_POST['category'];
+      if(empty($video_id) || empty($video_title) || empty($video_link) || empty($category))
       {
             $error = "<div style='color:#ff001d;border: 2px solid #869ceb;background-color:#ededed;font-weight: bold;font-size: 20px;text-align: center;'> Please Fill all the details!!! </div>";
       }
       else{
         date_default_timezone_set('Asia/Kolkata');
         $datetime = date("F j, Y g:i:s a");
-        $sql = "INSERT INTO videos(username,lectureid,lecture_title,course,create_datetime) VALUES('$username','$video_id','$video_title','$video_link','$datetime')";
+        $sql = "INSERT INTO videos(username,lectureid,category,lecture_title,course,create_datetime) VALUES('$username','$video_id','$category','$video_title','$video_link','$datetime')";
         $data = mysqli_query($con, $sql);
       
         if($data){
             $error = "<div  class='alert' style='color:#ff001d;height:50px;border: 2px solid #869ceb;background-color:#ededed;font-weight: bold;font-size: 20px;text-align: center;'>Successfully Inserted!!!</div>";
-            // header("Location:pages-blank.php");
+            header("Location:pages-blank.php");
         }
         else{
             $error = "<div  class='alert' style='color:#ff001d;height:50px;border: 2px solid #869ceb;background-color:#ededed;font-weight: bold;font-size: 20px;text-align: center;'> Oops Something Went Wrong :( </div>";
@@ -305,6 +305,19 @@
                                         <div class="col-md-12">
                                             <input type="text" placeholder="ID" name="video_id" class="form-control ps-0 form-control-line" />
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Lecture Category : </label>
+                                        <!-- <div class="col-md-12"> -->
+                                        <select name = "category" class="form-control ps-0" required id="package_name">
+                                            <option selected disabled value="">Select Package</option>
+                                            <option value="Elite Package">Elite Package</option>
+                                            <option value="Silver Package">Silver Package</option>
+                                            <option value="Gold Package">Gold Package</option>       
+                                            <option value="Sales Master Class">Sales Master Class</option>   
+                                            <option value="Lead Generation Mastery">Lead Generation Mastery</option>                         
+                                        </select>
+                                        <!-- </div> -->
                                     </div>
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">Lecture Title :</label>

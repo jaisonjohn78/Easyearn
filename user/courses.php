@@ -17,6 +17,7 @@
     $package_row = mysqli_fetch_assoc($package_result);
     if($package_row){
     $package_name = $package_row['package_name'];
+    $package_amount = $package_row['amount'];
     }
     else{
         $package_name = "Package is not selected!!";
@@ -84,6 +85,7 @@
                             text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
         }
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +132,7 @@
                 <ul class="sidebar-menu">
                     <li><a href="dashboard.php"><i class="ti ti-home me-2"></i>Overview</a></li>
                     <li><a href="courses.php"><i class="ti ti-home me-2"></i>Courses</a></li>
-                    <li><a href="certificate.php"><i class="ti ti-home me-2"></i>Certificate</a></li>
+                    <li><a href="reference.php"><i class="ti ti-home me-2"></i>Reference</a></li>
                     <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-user me-2"></i>Profile</a>
                         <div class="sidebar-submenu">
@@ -213,10 +215,10 @@
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
                                                     class="ti ti-mail"></i></span> Package:
                                             <?php echo $package_name ?></a>
-                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
-                                                    class="ti ti-home"></i></span> Sponsor: None</a>
-                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
-                                                    class="ti ti-settings"></i></span> Sponsor ID: None</a>
+                                            <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Package Amount: <?php echo $package_amount ?></a>
+
+                                        <!-- <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
+                                                    class="ti ti-settings"></i></span> Sponsor ID: None</a> -->
                                         <div class="dropdown-divider border-top"></div>
                                         <a class="dropdown-item text-dark" href="logout.php"><span
                                                 class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
@@ -235,17 +237,18 @@
                             <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
                                 <img src="../admin@millionairetrack/images/Package1646364123.png"
                                     class="img-fluid rounded courseImageExtra" alt="" width="260px">
-                                <div class="section-title ms-md-4">
-                                    <h5>Elite Package</h5>
-                                    <div class="d-md-flex justify-content-between align-items-center">
-                                        <h6 class="text-muted mb-0">₹ 508 </h6>
+                                <form action="" method="POST"></form>
+                                    <div class="section-title ms-md-4">
+                                        <h5>Elite Package</h5>
+                                        <div class="d-md-flex justify-content-between align-items-center">
+                                            <h6 class="text-muted mb-0">₹ 508 </h6>
+                                        </div>
+                                        <div class="mt-4">
+                                            <a class="btn btn-primary ms-2" href="elite-learning-courses.php?course=">Enroll</a>
+                                            <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
+                                        </div>
                                     </div>
-                                    <div class="mt-4">
-                                        <a class="btn btn-primary ms-2">Enroll</a>
-                                        <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
-                                    </div>
-                                    
-                                </div>
+                                </form>
                             </div>
                         </div>
                         
@@ -261,14 +264,14 @@
                                     </div>
                                     <div class="mt-4">
                                             <div class="mt-4">
-                                                <a class="btn btn-primary ms-2">Enroll</a>
+                                                <a class="btn btn-primary ms-2" >Enroll</a>
                                                 <input type="submit" class="btn btn-soft-primary ms-2"
                                                     name="buy1" value="Buy Now"/>
                                             </div>
                                     </div>
                                 </div>
                             </div>
-                            </form>
+                        </form>
                         </div>
                        
                         <div class="col-md-4">
@@ -285,7 +288,7 @@
                                         <div class="mt-4">
             
                                             <div class="mt-4">
-                                                <a class="btn btn-primary ms-2">Enroll</a>
+                                                <a class="btn btn-primary ms-2" >Enroll</a>
                                                 <input type="submit" class="btn btn-soft-primary ms-2"
                                                         name="buy2" value="Buy Now"/>
                                             </div>
@@ -308,7 +311,7 @@
                                             <h6 class="text-muted mb-0">₹ 508 </h6>
                                         </div> -->
                                         <div class="mt-4">
-                                            <a class="btn btn-primary ms-2">Enroll</a>
+                                            <a class="btn btn-primary ms-2" href="elite-learning-courses.php?course=">Enroll</a>
                                             <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
                                         </div>
                                         
@@ -333,7 +336,7 @@
                                     <div class="mt-4">
                                         
                                         <div class="mt-4">
-                                            <a class="btn btn-primary ms-2">Enroll</a>
+                                            <a class="btn btn-primary ms-2" href="silver-learning-courses.php?course=">Enroll</a>
                                             <!-- <a class="btn btn-soft-primary ms-2"
                                                 href="php/upgrade-cashfree-package.php?package=1">Buy Now</a> -->
                                         </div>
@@ -356,7 +359,7 @@
                                         <div class="mt-4">
             
                                             <div class="mt-4">
-                                                <a class="btn btn-primary ms-2">Enroll</a>
+                                                <a class="btn btn-primary ms-2" >Enroll</a>
                                                 <input type="submit" class="btn btn-soft-primary ms-2"
                                                             name="buy3" value="Buy Now"/>
                                             </div>
@@ -379,7 +382,7 @@
                                         <h6 class="text-muted mb-0">₹ 508 </h6>
                                     </div> -->
                                     <div class="mt-4">
-                                        <a class="btn btn-primary ms-2">Enroll</a>
+                                        <a class="btn btn-primary ms-2" href="elite-learning-courses.php?course=">Enroll</a>
                                         <!-- <a href="" ><button class="btn btn-soft-primary ms-2" type="submit" name="package1">Buy Now</button></a> -->
                                     </div>
                                     
@@ -398,7 +401,7 @@
                                     <div class="mt-4">
                                         
                                         <div class="mt-4">
-                                            <a class="btn btn-primary ms-2">Enroll</a>
+                                            <a class="btn btn-primary ms-2" href="silver-learning-courses.php?course=">Enroll</a>
                                             <!-- <a class="btn btn-soft-primary ms-2"
                                                 href="php/upgrade-cashfree-package.php?package=1">Buy Now</a> -->
                                         </div>
@@ -428,7 +431,7 @@
                                     <div class="mt-4">
         
                                         <div class="mt-4">
-                                            <a class="btn btn-primary ms-2">Enroll</a>
+                                            <a class="btn btn-primary ms-2" href="gold-learning-courses.php?course=">Enroll</a>
                                             <!-- <a class="btn btn-soft-primary ms-2"
                                                 href="php/upgrade-cashfree-package.php?package=1">Buy Now</a> -->
                                         </div>
@@ -452,7 +455,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a class="col-md-4" href="learning-courses.php?course=">
+                        <a class="col-md-4" href="lead-learning-courses.php?course=">
                             <div class="card shadow border-0 rounded">
                                 <div class="d-flex align-items-center">
                                     <img src="../admin@millionairetrack/images/course1657015785.png"

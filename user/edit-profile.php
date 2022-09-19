@@ -17,6 +17,7 @@
     $package_row = mysqli_fetch_assoc($package_result);
     if($package_row){
     $package_name = $package_row['package_name'];
+    $package_amount = $package_row['amount'];
     }
     else{
         $package_name = "Package is not selected!!";
@@ -116,7 +117,7 @@
                 <ul class="sidebar-menu">
                     <li><a href="dashboard.php"><i class="ti ti-home me-2"></i>Overview</a></li>
                     <li><a href="courses.php"><i class="ti ti-home me-2"></i>Courses</a></li>
-                    <li><a href="certificate.php"><i class="ti ti-home me-2"></i>Certificate</a></li>
+                    <li><a href="reference.php"><i class="ti ti-home me-2"></i>Reference</a></li>
                     <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-user me-2"></i>Profile</a>
                         <div class="sidebar-submenu">
@@ -189,10 +190,9 @@
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span> Package: <?php echo $package_name ?></a>
-                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
-                                                    class="ti ti-home"></i></span> Sponsor: None</a>
-                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
-                                                    class="ti ti-settings"></i></span> Sponsor ID: None</a>
+                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Package Amount: <?php echo $package_amount ?></a>
+
+                                        
                                         <div class="dropdown-divider border-top"></div>
                                         <a class="dropdown-item text-dark" href="logout.php"><span
                                                 class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
