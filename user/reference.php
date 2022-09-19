@@ -119,7 +119,7 @@
                 <ul class="sidebar-menu">
                     <li><a href="dashboard.php"><i class="ti ti-home me-2"></i>Overview</a></li>
                     <li><a href="courses.php"><i class="ti ti-home me-2"></i>Courses</a></li>
-                    <li><a href="certificate.php"><i class="ti ti-home me-2"></i>Certificate</a></li>
+                    <li><a href="reference.php"><i class="ti ti-home me-2"></i>Reference</a></li>
                     <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-user me-2"></i>Profile</a>
                         <div class="sidebar-submenu">

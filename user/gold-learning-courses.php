@@ -98,7 +98,7 @@
                             </ul>
                         </div>
                     </li>
-                    <!-- <li class="sidebar-dropdown">
+                    <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Affiliate Panel</a>
                         <div class="sidebar-submenu">
                             <ul>
@@ -108,7 +108,7 @@
                                 <li><a href="webinar.php">Webinar</a></li>
                             </ul>
                         </div>
-                    </li> -->
+                    </li>
                     <li><a href=""><i class="ti ti-home me-2"></i>Setting</a></li>
                 </ul>
                 <!-- sidebar-menu  -->
@@ -201,7 +201,7 @@
                             <div class="lecture">
                                 <span class="lecture-heading">Lecture Video</span>
                                 <?php
-                                        $lecture_query =$con->query("select * from videos where category = 'Sales Master Class'");
+                                        $lecture_query =$con->query("select * from videos WHERE category='Silver Package'");
                                         if(mysqli_num_rows($lecture_query)>0){
                                         while($lecture_row = $lecture_query->fetch_assoc()){
                                           $lecture_title = $lecture_row['lecture_title'];
@@ -211,9 +211,9 @@
                                         
                                 ?>
                                 <a
-                                    href="learning-courses.php?lectureId=<?php echo $lecture_id?>&course=<?php echo $lecture_course ?>">
+                                    href="gold-learning-courses.php?lectureId=<?php echo $lecture_id?>&course=<?php echo $lecture_course ?>">
                                     <span class="lecture-name">1 <?php echo $lecture_id ?> . <?php echo $lecture_title ?></span></a><a
-                                    href="learning-courses.php?lectureId=14&course=1679091c5a880faf6fb5e6087eb1b2dc">
+                                    href="gold-learning-courses.php?lectureId=14&course=1679091c5a880faf6fb5e6087eb1b2dc">
                                     <?php 
                                 }}
                                 else

@@ -467,7 +467,8 @@ ob_end_flush();
                                                                     <option selected disabled value="">Select Package</option>
                                                                     <option value="Elite Package">Elite Package</option>
                                                                     <option value="Silver Package">Silver Package</option>
-                                                                    <option value="Gold Package">Gold Package</option>                                                                </select>
+                                                                    <option value="Gold Package">Gold Package</option>                             
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
@@ -514,7 +515,7 @@ ob_end_flush();
                                                     <div class="col-md-12">
                                                         <div class="d-grid">
                                                             <button class="btn btn-info " onclick="pay_now()">Pay Now</button>
-                                                            <button class="btn btn-primary d-none" type="submit" name="submit" >Register</button>
+                                                            <!-- <button class="btn btn-primary d-none" type="submit" name="submit" >Register</button> -->
                                                         </div>
                                                     </div><!--end col-->
 
@@ -610,7 +611,6 @@ ob_end_flush();
                                url:'payment_process.php',
                                data:"payment_id="+response.razorpay_payment_id,
                                success:function(result){
-                                    register();
                                    window.location.href="register.php?auth=success";
                                }
                            });
