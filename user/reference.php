@@ -225,7 +225,7 @@
                        <div class="col-xl-8" style="margin:auto" ;>
                             <div class="card vh-auto">
                                 <div class="card-header">
-                                    <h1 class="card-title text-dark fw-500">Reference Code </h1>
+                                    <h1 class="card-title text-dark fw-500">Refer and Earn </h1>
                                 </div>
                                 <form action="" method="post">
                                     

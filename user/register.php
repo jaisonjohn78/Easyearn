@@ -9,13 +9,19 @@ ob_start();
     require '.././vendor/autoload.php';
     $error = "";
 
-    $reference_code = $_GET['refer'];
+    if(isset($_GET['refer'])) {
+        $reference_code = $_GET['refer'];
+        $user_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
+        $user_result =mysqli_fetch_assoc($user_sql);
+        $refered_by=$user_result['username'];
+        
+    } else {
+        $reference_code = "";
+        $refered_by = "";
+    }
 
-    $user_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
-    $user_result =mysqli_fetch_assoc($user_sql);
-    $refered_by=$user_result['username'];
 // $code = mysqli_real_escape_string($con, md5(rand()));
-function register_func()
+if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
 {
     $username = $_POST['username'];
     $email = $_POST['email'];
