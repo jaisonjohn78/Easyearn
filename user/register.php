@@ -627,7 +627,7 @@ ob_end_flush();
                     rzp1.open();
                }
            });
-    }
+        }
                    </script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
