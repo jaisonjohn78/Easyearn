@@ -148,7 +148,7 @@ ob_end_flush();
         <!-- javascript -->
         <script> 
         let package = {
-            'Elite Package':'508','Silver Package':'1999','Gold Package':'3500',        };
+            'Elite Package':'699','Silver Package':'2250','Gold Package':'3850',        };
         let packageExtra = {
             'Elite Package':'699','Silver Package':'2250','Gold Package':'3850',        };
         function fetchName(data){

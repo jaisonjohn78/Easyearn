@@ -250,7 +250,7 @@
                                     <div class="section-title ms-md-4">
                                         <h5>Elite Package</h5>
                                         <div class="d-md-flex justify-content-between align-items-center">
-                                            <h6 class="text-muted mb-0">₹ 508 </h6>
+                                            <h6 class="text-muted mb-0">₹ 699 </h6>
                                         </div>
                                         <div class="mt-4">
                                             <a class="btn btn-primary ms-2" href="elite-learning-courses.php?course=">Enroll</a>
@@ -269,7 +269,7 @@
                                 <div class="section-title ms-md-4">
                                     <h5 id="silver">Silver Package</h5>
                                     <div class="d-md-flex justify-content-between align-items-center">
-                                        <h6 class="text-muted mb-0">₹ 1999 </h6>
+                                        <h6 class="text-muted mb-0">₹ 2250 </h6>
                                     </div>
                                     <div class="mt-4">
                                             <div class="mt-4">
@@ -292,7 +292,7 @@
                                     <div class="section-title ms-md-4">
                                         <h5 id="gold">Gold Package</h5>
                                         <div class="d-md-flex justify-content-between align-items-center">
-                                            <h6 class="text-muted mb-0">₹ 3500 </h6>
+                                            <h6 class="text-muted mb-0">₹ 3850 </h6>
                                         </div>
 
                                         <div class="mt-4">
@@ -336,7 +336,7 @@
                                 <div class="section-title ms-md-2">
                                     <h5>Silver Package</h5>
                                     <div>
-                                        <h6 class="text-muted mb-0">₹ 1999 </h6>
+                                        <h6 class="text-muted mb-0">₹ 2250 </h6>
                                 </div>
                                     <!-- <div>
                                         <h6 class=" mb-0"  style="color:red">₹ 508 </h6>
@@ -364,7 +364,7 @@
                                     <div class="section-title ms-md-4">
                                         <h5 id="s_gold">Gold Package</h5>
                                         <div class="d-md-flex justify-content-between align-items-center">
-                                            <h6 class="text-muted mb-0">₹ 3500 </h6>
+                                            <h6 class="text-muted mb-0">₹ 3850 </h6>
                                         </div>
 
                                         <div class="mt-4">
@@ -429,7 +429,7 @@
                                 <div class="section-title ms-md-4">
                                     <h5>Gold Package</h5>
                                     <div class="d-md-flex justify-content-between align-items-center">
-                                        <h6 class="text-muted mb-0">₹ 3500 </h6>
+                                        <h6 class="text-muted mb-0">₹ 3850 </h6>
                                     </div>
                                     <!-- <div>
                                         <h6 class="mb-0" style="color:red">₹ 1999 </h6>
@@ -502,21 +502,21 @@
         function gold_pay_now(){
             var package_name=jQuery('#package_name').text();
            
-            var amt = 3500;
+            var amt = 3850;
             // console.log(package_name);
             // console.log(amt);
             jQuery.ajax({
                 type:'post',
                 url:'update_package.php',
-                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                data:"amt="+amt+"&package_name="+package_name,
                 success:function(result){
                     var options = {
                             "key": "rzp_live_UhvoCF0admOUso", 
                             "amount": amt*100, 
                             "currency": "INR",
                             "name": "Easyearn",
-                            "description": "Test Transaction",
-                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "description": "Proceed To Enroll",
+                            "image": "./image/logo.png",
                             "handler": function (response){
                             jQuery.ajax({
                                 type:'post',
@@ -542,15 +542,15 @@
             jQuery.ajax({
                 type:'post',
                 url:'update_package.php',
-                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                data:"amt="+amt+"&package_name="+package_name,
                 success:function(result){
                     var options = {
                             "key": "rzp_live_UhvoCF0admOUso", 
                             "amount": amt*100, 
                             "currency": "INR",
                             "name": "Easyearn",
-                            "description": "Test Transaction",
-                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "description": "Proceed To Enroll",
+                            "image": "./image/logo.png",
                             "handler": function (response){
                             jQuery.ajax({
                                 type:'post',
@@ -570,21 +570,21 @@
         }
         function e_gold_pay_now(){
             var package_name=jQuery('#gold').text();
-            var amt = 3500;
+            var amt = 3850;
             // console.log(package_name);
             // console.log(amt);
             jQuery.ajax({
                 type:'post',
                 url:'update_package.php',
-                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                data:"amt="+amt+"&package_name="+package_name,
                 success:function(result){
                     var options = {
                             "key": "rzp_live_UhvoCF0admOUso", 
                             "amount": amt*100, 
                             "currency": "INR",
                             "name": "Easyearn",
-                            "description": "Test Transaction",
-                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "description": "Proceed To Enroll",
+                            "image": "./image/logo.png",
                             "handler": function (response){
                             jQuery.ajax({
                                 type:'post',
@@ -605,7 +605,7 @@
         // console.log(username);
         function pay_now(){
             var package_name=jQuery('#s_gold').text();
-            var amt = 3500;
+            var amt = 3850;
             
             // console.log(package_name);
             // console.log(amt);
@@ -619,8 +619,8 @@
                             "amount": amt*100, 
                             "currency": "INR",
                             "name": "Easyearn",
-                            "description": "Test Transaction",
-                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "description": "Proceed To Enroll",
+                            "image": "./image/logo.png",
                             "handler": function (response){
                             jQuery.ajax({
                                 type:'post',
