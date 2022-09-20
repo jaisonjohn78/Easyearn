@@ -12,6 +12,8 @@
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
     
+    
+    $get_package_name = $_GET['package'];
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
@@ -28,63 +30,64 @@
     $img_fetch = mysqli_fetch_assoc($img_result1);
     $img_photo = $img_fetch['profile_photo'];
 
-    if(isset($_POST['buy1']))
-    {
-        $buy1_sql = "UPDATE `package` SET `package_name` = 'Silver Package' , amount = 2250 WHERE `username` = '$username'";
-        $buy1_data = mysqli_query($con, $buy1_sql);
 
-        if($buy1_data){
-            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-                            text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
-            ?>
+    if($get_package_name != ""){
+        $buy1_sql = "UPDATE `package` SET `package_name` = '$get_package_name' , amount = 2250 WHERE `username` = '$username'";
+        $buy1_data = mysqli_query($con, $buy1_sql);
+        header("Location: courses.php");
+    }
+    //     if($buy1_data){
+    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+    //                         text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
+    //         ?>
             <script>
-                window.location.href = "courses.php";
-                </script>
+    //             window.location.href = "courses.php";
+    //             </script>
                 <?php
-        }
-        else{
-            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-                            text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
-        }
-    }
-    if(isset($_POST['buy2']))
-    {
-        $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
-        $buy1_data = mysqli_query($con, $buy1_sql);
+    //     }
+    //     else{
+    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+    //                         text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
+    //     }
+    // }
+    // if(isset($_POST['buy2']))
+    // {
+    //     $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
+    //     $buy1_data = mysqli_query($con, $buy1_sql);
 
-        if($buy1_data){
-            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-                            text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
-                            ?>
+    //     if($buy1_data){
+    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+    //                         text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
+    //                         ?>
                             <script>
-                            window.location.href = "courses.php";
-                            </script>
-                            <?php
-        }
-        else{
-            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-                            text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
-        }
-    }
-    if(isset($_POST['buy3']))
-    {
-        $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
-        $buy1_data = mysqli_query($con, $buy1_sql);
+    //                         window.location.href = "courses.php";
+    //                         </script>
+                          <?php
+    //     }
+    //     else{
+    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+    //                         text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
+    //     }
+    // }
+    // if(isset($_POST['buy3']))
+    // {
+    //     $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
+    //     $buy1_data = mysqli_query($con, $buy1_sql);
 
-        if($buy1_data){
-            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-                            text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
-                           ?>
-                           <script>
-                window.location.href = "courses.php";
-                </script>
-                <?php
-        }
-        else{
-            $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-                            text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
-        }
-    }
+    //     if($buy1_data){
+    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+    //                         text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
+    //                        ?>
+                          <script>
+    //             window.location.href = "courses.php";
+    //             </script>
+              <?php
+    //     }
+    //     else{
+    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
+    //                         text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
+    //     }
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -110,7 +113,8 @@
     <!-- Css -->
     <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" id="theme-opt" />
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body>
@@ -258,15 +262,16 @@
                                 <img src="../admin@millionairetrack/images/Package1646364204.png"
                                     class="img-fluid rounded courseImageExtra" alt="" width="260px">
                                 <div class="section-title ms-md-4">
-                                    <h5>Silver Package</h5>
+                                    <h5 id="silver">Silver Package</h5>
                                     <div class="d-md-flex justify-content-between align-items-center">
                                         <h6 class="text-muted mb-0">₹ 1999 </h6>
                                     </div>
                                     <div class="mt-4">
                                             <div class="mt-4">
                                                 <a class="btn btn-primary ms-2" >Enroll</a>
-                                                <input type="submit" class="btn btn-soft-primary ms-2"
-                                                    name="buy1" value="Buy Now"/>
+                                                <!-- <input type="submit" class="btn btn-soft-primary ms-2"
+                                                    name="buy1" value="Buy Now"/> -->
+                                                    <input type="button" class="btn btn-soft-primary ms-2" name="btn" id="btn" value="Buy Now" onclick="silver_pay_now()"/>
                                             </div>
                                     </div>
                                 </div>
@@ -280,7 +285,7 @@
                                     <img src="../admin@millionairetrack/images/Package1646364247.png"
                                         class="img-fluid rounded courseImageExtra" alt="" width="260px">
                                     <div class="section-title ms-md-4">
-                                        <h5>Gold Package</h5>
+                                        <h5 id="gold">Gold Package</h5>
                                         <div class="d-md-flex justify-content-between align-items-center">
                                             <h6 class="text-muted mb-0">₹ 3500 </h6>
                                         </div>
@@ -289,8 +294,9 @@
             
                                             <div class="mt-4">
                                                 <a class="btn btn-primary ms-2" >Enroll</a>
-                                                <input type="submit" class="btn btn-soft-primary ms-2"
-                                                        name="buy2" value="Buy Now"/>
+                                                <!-- <input type="submit" class="btn btn-soft-primary ms-2"
+                                                        name="buy2" value="Buy Now"/> -->
+                                                <input type="button" class="btn btn-soft-primary ms-2" name="btn" id="btn" value="Buy Now" onclick="e_gold_pay_now()"/>
                                             </div>
                                             
                                         </div>
@@ -346,12 +352,12 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <form method="POST" action="" enctype="multipart/form-data">
+                        <form method="POST" action="" enctype="multipart/form-data">
                                 <div class="card border-0 rounded p-4 shadow mt-4 width-fit-content">
                                     <img src="../admin@millionairetrack/images/Package1646364247.png"
                                         class="img-fluid rounded courseImageExtra" alt="" width="260px">
                                     <div class="section-title ms-md-4">
-                                        <h5>Gold Package</h5>
+                                        <h5 id="s_gold">Gold Package</h5>
                                         <div class="d-md-flex justify-content-between align-items-center">
                                             <h6 class="text-muted mb-0">₹ 3500 </h6>
                                         </div>
@@ -360,8 +366,9 @@
             
                                             <div class="mt-4">
                                                 <a class="btn btn-primary ms-2" >Enroll</a>
-                                                <input type="submit" class="btn btn-soft-primary ms-2"
-                                                            name="buy3" value="Buy Now"/>
+                                                <!-- <input type="submit" class="btn btn-soft-primary ms-2"
+                                                            name="buy3" onclick="pay_now()" value="Buy Now"/> -->
+                                                            <input type="button" class="btn btn-soft-primary ms-2" name="btn" id="btn" value="Buy Now" onclick="pay_now()"/>
                                             </div>
                                             
                                         </div>
@@ -486,6 +493,147 @@
     <script src="assets/js/plugins.init.js"></script>
     <script src="assets/js/app.js"></script>
 
+    <script>
+        function gold_pay_now(){
+            var package_name=jQuery('#package_name').text();
+           
+            var amt = 3500;
+            // console.log(package_name);
+            // console.log(amt);
+            jQuery.ajax({
+                type:'post',
+                url:'update_package.php',
+                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                success:function(result){
+                    var options = {
+                            "key": "rzp_live_UhvoCF0admOUso", 
+                            "amount": amt*100, 
+                            "currency": "INR",
+                            "name": "Easyearn",
+                            "description": "Test Transaction",
+                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "handler": function (response){
+                            jQuery.ajax({
+                                type:'post',
+                                url:'update_package.php',
+                                data:"payment_id="+response.razorpay_payment_id,
+                                success:function(result){
+                                    window.location.href="courses.php?package=Gold Package";
+                                }
+                            });
+                            console.log(response);
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                }
+            });
+        }
+        function silver_pay_now(){
+            var package_name=jQuery('#silver').text();
+            var amt = 2250;
+            // console.log(package_name);
+            // console.log(amt);
+            jQuery.ajax({
+                type:'post',
+                url:'update_package.php',
+                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                success:function(result){
+                    var options = {
+                            "key": "rzp_live_UhvoCF0admOUso", 
+                            "amount": amt*100, 
+                            "currency": "INR",
+                            "name": "Easyearn",
+                            "description": "Test Transaction",
+                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "handler": function (response){
+                            jQuery.ajax({
+                                type:'post',
+                                url:'update_package.php',
+                                data:"payment_id="+response.razorpay_payment_id,
+                                success:function(result){
+                                    window.location.href="courses.php?package=Silver Package";
+                                }
+                            });
+                            console.log(response);
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                }
+            });
+        }
+        function e_gold_pay_now(){
+            var package_name=jQuery('#gold').text();
+            var amt = 3500;
+            // console.log(package_name);
+            // console.log(amt);
+            jQuery.ajax({
+                type:'post',
+                url:'update_package.php',
+                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                success:function(result){
+                    var options = {
+                            "key": "rzp_live_UhvoCF0admOUso", 
+                            "amount": amt*100, 
+                            "currency": "INR",
+                            "name": "Easyearn",
+                            "description": "Test Transaction",
+                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "handler": function (response){
+                            jQuery.ajax({
+                                type:'post',
+                                url:'update_package.php',
+                                data:"payment_id="+response.razorpay_payment_id,
+                                success:function(result){
+                                    window.location.href="courses.php?package=Gold Package";
+                                }
+                            });
+                            console.log(response);
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                }
+            });
+        }
+        // console.log(username);
+        function pay_now(){
+            var package_name=jQuery('#s_gold').text();
+            var amt = 3500;
+            
+            // console.log(package_name);
+            // console.log(amt);
+            jQuery.ajax({
+                type:'post',
+                url:'update_package.php',
+                data:"amt="+amt+"&package_name="+package_name,
+                success:function(result){
+                    var options = {
+                            "key": "rzp_live_UhvoCF0admOUso", 
+                            "amount": amt*100, 
+                            "currency": "INR",
+                            "name": "Easyearn",
+                            "description": "Test Transaction",
+                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                            "handler": function (response){
+                            jQuery.ajax({
+                                type:'post',
+                                url:'update_package.php',
+                                data:"payment_id="+response.razorpay_payment_id,
+                                success:function(result){
+                                    window.location.href="courses.php?package=Gold Package";
+                                }
+                            });
+                            console.log(response);
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                }
+            });
+        }
+    </script>
 </body>
 
 
