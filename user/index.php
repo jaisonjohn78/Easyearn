@@ -4,8 +4,8 @@
     require_once 'config/db.php'; 
     require_once 'config/function.php'; 
     
-    $_GET['authen'] = '';
-    if($_GET['authen'] == 'success') {
+    // $_GET['authen'] = '';
+    if(isset($_GET['authen']) == 'success') {
                         
         $error = "<div style='color:red'> Payment Successfull please login to Visit Dashboard </div>";
         // set_message($error);

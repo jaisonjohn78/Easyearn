@@ -12,8 +12,12 @@
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
     
-    
-    $get_package_name = $_GET['package'];
+    if(isset($_GET['id']) && $_GET['id'] != ''){
+        $get_package_name = $_GET['package'];
+    }
+    else{
+        $get_package_name = "";
+    }
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
@@ -36,58 +40,7 @@
         $buy1_data = mysqli_query($con, $buy1_sql);
         header("Location: courses.php");
     }
-    //     if($buy1_data){
-    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-    //                         text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
-    //         ?>
-            <script>
-    //             window.location.href = "courses.php";
-    //             </script>
-                <?php
-    //     }
-    //     else{
-    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-    //                         text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
-    //     }
-    // }
-    // if(isset($_POST['buy2']))
-    // {
-    //     $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
-    //     $buy1_data = mysqli_query($con, $buy1_sql);
-
-    //     if($buy1_data){
-    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-    //                         text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
-    //                         ?>
-                            <script>
-    //                         window.location.href = "courses.php";
-    //                         </script>
-                          <?php
-    //     }
-    //     else{
-    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-    //                         text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
-    //     }
-    // }
-    // if(isset($_POST['buy3']))
-    // {
-    //     $buy1_sql = "UPDATE `package` SET `package_name` = 'Gold Package' , amount = 3500 WHERE `username` = '$username'";
-    //     $buy1_data = mysqli_query($con, $buy1_sql);
-
-    //     if($buy1_data){
-    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-    //                         text-align:center;border-radius:10px;'>Silver Package has been selected</p>";
-    //                        ?>
-                          <script>
-    //             window.location.href = "courses.php";
-    //             </script>
-              <?php
-    //     }
-    //     else{
-    //         $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
-    //                         text-align:center;border-radius:10px;'> Oops Something Went Wrong :( </p>";
-    //     }
-    // }
+   
 
 ?>
 <!DOCTYPE html>
@@ -361,16 +314,13 @@
                                         <div class="d-md-flex justify-content-between align-items-center">
                                             <h6 class="text-muted mb-0">₹ 3500 </h6>
                                         </div>
-
                                         <div class="mt-4">
-            
                                             <div class="mt-4">
                                                 <a class="btn btn-primary ms-2" >Enroll</a>
                                                 <!-- <input type="submit" class="btn btn-soft-primary ms-2"
                                                             name="buy3" onclick="pay_now()" value="Buy Now"/> -->
                                                             <input type="button" class="btn btn-soft-primary ms-2" name="btn" id="btn" value="Buy Now" onclick="pay_now()"/>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -494,41 +444,7 @@
     <script src="assets/js/app.js"></script>
 
     <script>
-        function gold_pay_now(){
-            var package_name=jQuery('#package_name').text();
-           
-            var amt = 3500;
-            // console.log(package_name);
-            // console.log(amt);
-            jQuery.ajax({
-                type:'post',
-                url:'update_package.php',
-                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
-                success:function(result){
-                    var options = {
-                            "key": "rzp_live_UhvoCF0admOUso", 
-                            "amount": amt*100, 
-                            "currency": "INR",
-                            "name": "Easyearn",
-                            "description": "Test Transaction",
-                            "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
-                            "handler": function (response){
-                            jQuery.ajax({
-                                type:'post',
-                                url:'update_package.php',
-                                data:"payment_id="+response.razorpay_payment_id,
-                                success:function(result){
-                                    window.location.href="courses.php?package=Gold Package";
-                                }
-                            });
-                            console.log(response);
-                            }
-                        };
-                        var rzp1 = new Razorpay(options);
-                        rzp1.open();
-                }
-            });
-        }
+
         function silver_pay_now(){
             var package_name=jQuery('#silver').text();
             var amt = 2250;
@@ -537,7 +453,7 @@
             jQuery.ajax({
                 type:'post',
                 url:'update_package.php',
-                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                data:"amt="+amt+"&package_name="+package_name,
                 success:function(result){
                     var options = {
                             "key": "rzp_live_UhvoCF0admOUso", 
@@ -571,7 +487,7 @@
             jQuery.ajax({
                 type:'post',
                 url:'update_package.php',
-                data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+                data:"amt="+amt+"&package_name="+package_name,
                 success:function(result){
                     var options = {
                             "key": "rzp_live_UhvoCF0admOUso", 

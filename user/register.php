@@ -9,11 +9,22 @@ ob_start();
     require '.././vendor/autoload.php';
     $error = "";
 
-    $reference_code = $_GET['refer'];
+    if(isset($_GET['refere']) != ""){
+        $reference_code = $_GET['refer'];
+    }
+    else{
+        $reference_code = "";
+    }
 
     $user_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
     $user_result =mysqli_fetch_assoc($user_sql);
-    $refered_by=$user_result['username'];
+    // $refered_by=$user_result['username'];
+    if(mysqli_num_rows($user_sql) > 0){
+        $refered_by = $user_result['username'];
+        }
+        else{
+            $refered_by = "";
+        }
 // $code = mysqli_real_escape_string($con, md5(rand()));
 function register_func()
 {

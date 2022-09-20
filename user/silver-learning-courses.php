@@ -86,7 +86,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="sidebar-dropdown">
+                    <!-- <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Affiliate Panel</a>
                         <div class="sidebar-submenu">
                             <ul>
@@ -96,7 +96,7 @@
                                 <li><a href="webinar.php">Webinar</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li><a href=""><i class="ti ti-home me-2"></i>Setting</a></li>
                 </ul>
                 <!-- sidebar-menu  -->

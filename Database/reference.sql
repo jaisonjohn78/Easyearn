@@ -24,27 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `videos`
+-- Table structure for table `reference`
 --
 
-CREATE TABLE `videos` (
+CREATE TABLE `reference` (
   `id` int(11) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `lectureid` int(11) NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `lecture_title` varchar(255) NOT NULL,
-  `course` varchar(255) NOT NULL,
-  `create_datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `refered_by` varchar(255) NOT NULL,
+  `reference_id` varchar(255) NOT NULL,
+  `timestamp` varchar(255) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reference`
+--
+
+INSERT INTO `reference` (`id`, `user_id`, `username`, `refered_by`, `reference_id`, `timestamp`) VALUES
+(1, '23', 'deep', 'joy sir ', 'T2Fssd4a', 'September 19, 2022, 10:45 am'),
+(2, '25', 'vrajesh', 'deep', 'TzLFIJ4o', 'September 19, 2022, 10:48 am');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `videos`
+-- Indexes for table `reference`
 --
-ALTER TABLE `videos`
+ALTER TABLE `reference`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -52,10 +59,10 @@ ALTER TABLE `videos`
 --
 
 --
--- AUTO_INCREMENT for table `videos`
+-- AUTO_INCREMENT for table `reference`
 --
-ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `reference`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
