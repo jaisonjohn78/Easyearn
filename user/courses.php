@@ -13,7 +13,12 @@
     $username = $row['username'];
     
     
-    $get_package_name = $_GET['package'];
+    if(isset($_GET['id']) && $_GET['id'] != ''){
+        $get_package_name = $_GET['package'];
+    }
+    else{
+        $get_package_name = "";
+    }
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
