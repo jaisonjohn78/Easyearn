@@ -4,15 +4,16 @@
     require_once 'config/db.php'; 
     require_once 'config/function.php'; 
     
-    $_GET['authen'] = '';
-    if($_GET['authen'] == 'success') {
-                        
-        $error = "<div style='color:red'> Payment Successfull please login to Visit Dashboard </div>";
-        // set_message($error);
-    }
-
+    
     global $con;
     $error = "";
+    if(isset($_GET['authen'])) {
+        $error = "<div style='color:green'> Payment Successfull please login to Visit Dashboard </div>";
+        // set_message($error);
+    } else {
+        $_GET['authen'] = '';
+
+    }
 
     if (isset($_GET['verification'])) {
         if (mysqli_num_rows(mysqli_query($con, "SELECT * FROM users WHERE code='{$_GET['verification']}'")) > 0) {
@@ -54,17 +55,49 @@
                         }
                         elseif ((md5($password) == $db_pass) && empty($row['code'])) {
                             $pack = $row['package'];
-                            if($pack == '699' || $pack == 699)
+                            if($pack != 'success')
                             {
-                                redirect("https://pmny.in/jIEoN5GXJ7kQ");
-                            }
-                            if($pack == 2250 || $pack == '2250')
-                            {
-                                redirect("https://pmny.in/UI1VYoNLLxbz");
-                            }
-                            if($pack == 3850 || $pack == '3850')
-                            {
-                                redirect("https://pmny.in/Xr1VYhjpCfKz");
+                                ?>
+                                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+        
+        var package_name='EasyEarn';
+        var amt = <?php echo $pack ?>;
+        var username='user';
+        // console.log(package_name);
+        // console.log(amt);
+         jQuery.ajax({
+               type:'post',
+               url:'payment_process.php',
+               data:"amt="+amt+"&package_name="+package_name+"&username="+username,
+               success:function(result){
+                   var options = {
+                        "key": "rzp_live_UhvoCF0admOUso", 
+                        "amount": amt*100, 
+                        "currency": "INR",
+                        "name": "Easyearn",
+                        "description": "Proceed to Login",
+                        "image": "./image/logo.png",
+                        "handler": function (response){
+                           jQuery.ajax({
+                               type:'post',
+                               url:'payment_process.php',
+                               data:"payment_id="+response.razorpay_payment_id,
+                               success:function(result){
+                                   window.location.href="index.php?auth=success";
+                               }
+                           });
+                        console.log(response);
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+               }
+           });
+    
+    </script>
+                            <?php
                             }
                             if($pack == 'success' )
                             {
@@ -157,7 +190,7 @@
 
                                                     <div class="col-lg-12 mb-0">
                                                         <div class="d-grid">
-                                                            <button class="btn btn-primary"  name="login_submit" type="submit">Sign in</button>
+                                                            <button class="btn btn-primary"  name="login_submit" type="submit" >Sign in</button>
                                                         </div>
                                                     </div><!--end col-->
 
@@ -186,6 +219,8 @@
         <!-- Main Js -->
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
+        
+        
         
     </body>
 </html>

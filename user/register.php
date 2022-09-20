@@ -29,6 +29,9 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
     $cpassword =$_POST['cpassword'];
     $phone = $_POST['phone'];
     $package = $_POST['package'];
+    if(isset($_POST['sponsorId'])) {
+        $refered_code_post = $_POST['sponsorId'];
+    }
     $amount = $_POST['amount'];
     
     $code = mysqli_real_escape_string($con, md5(rand()));
@@ -313,10 +316,13 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                             }
                             echo "</div>";
                             $today = date("F j, Y, g:i a"); 
-
-                            $get_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
-                            $get_result =mysqli_fetch_assoc($get_sql);
-                            $refered_by=$get_result['username'];
+                            
+                            if(isset($refered_code_post)) {
+                                $get_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
+                                $get_result =mysqli_fetch_assoc($get_sql);
+                                $refered_by=$get_result['username'];
+                                
+                            
                             $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `username` = '$username' AND `reference_id` = '$reference_code'");
                             if(mysqli_num_rows($get_sql)){
                                 if(mysqli_num_rows($sql1) == 0){
@@ -345,6 +351,7 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                                     text-align:center;'>Already exist</p>";
                                 }
                             }
+                        }
                             else{
                                 $error ="<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;
                                 text-align:center;'>Please Enter Valid Reference Code!!!</p>";
@@ -520,8 +527,8 @@ ob_end_flush();
 
                                                     <div class="col-md-12">
                                                         <div class="d-grid">
-                                                            <button class="btn btn-info " onclick="pay_now()">Pay Now</button>
-                                                            <!-- <button class="btn btn-primary d-none" type="submit" name="submit" >Register</button> -->
+                                                            <!-- <button class="btn btn-info " onclick="pay_now()">Pay Now</button> -->
+                                                            <button class="btn btn-primary" type="submit" name="submit" >Register</button>
                                                         </div>
                                                     </div><!--end col-->
 
