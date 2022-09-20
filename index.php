@@ -101,10 +101,10 @@
                                  </li>
                                  <li class="menu-item"><a href="contact.php">Contact US</a>
                                  </li>
-                                 <!-- <li class="menu-item"><a href="user/index.php">Login</a>
+                                 <li class="menu-item"><a href="user/index.php">Login</a>
                                  </li>
                                  <li class="menu-item"><a href="user/register.php">Enroll Now</a>
-                                 </li> -->
+                                 </li>
                               </ul>
                               
                            </nav>
