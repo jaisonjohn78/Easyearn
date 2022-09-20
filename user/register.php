@@ -26,7 +26,7 @@ ob_start();
             $refered_by = "";
         }
 // $code = mysqli_real_escape_string($con, md5(rand()));
-function register_func()
+if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
 {
     $username = $_POST['username'];
     $email = $_POST['email'];
