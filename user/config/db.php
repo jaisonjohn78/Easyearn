@@ -20,5 +20,5 @@
     $con = mysqli_connect($hostname, $username, $password, $database) or die("Database connection failed");
     $base_url = "http://www.easyearn/";
     $my_email = "easyearnfoundation@gmail.com";
-    $password = "ffasdgrsrrgiuoij";
+    $password = "yxcnugdwnjpvulsr";
 ?>

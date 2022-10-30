@@ -40,7 +40,7 @@
                     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
                     $mail->Username   = 'easyearnfoundation@gmail.com';                     //SMTP username
-                    $mail->Password   = 'qynsykogivpghiqv';                              //SMTP password
+                    $mail->Password   = 'yxcnugdwnjpvulsr';                              //SMTP password
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
@@ -258,8 +258,11 @@
                    
                 } catch (Exception $e) {
                     $error = "<p style='background: #f2dedf;color: #9c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;border-radius:10px;'>Message could not be sent. Mailer Error: $mail->ErrorInfo</p> ";
-    
+                        ?>
+                        <script>
                         alert("Message could not be sent. Mailer Error: <?php echo $mail->ErrorInfo ?>");
+                        </script>
+                        <?php
                 
                 }
                 echo "</div>";      
