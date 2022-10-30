@@ -88,7 +88,7 @@
                 <ul class="sidebar-menu">
                     <li><a href="dashboard.php"><i class="ti ti-home me-2"></i>Overview</a></li>
                     <li><a href="courses.php"><i class="ti ti-home me-2"></i>Courses</a></li>
-                    <li><a href="certificate.php"><i class="ti ti-home me-2"></i>Certificate</a></li>
+                    <li><a href="reference.php"><i class="ti ti-home me-2"></i>Reference</a></li>
                     <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-user me-2"></i>Profile</a>
                         <div class="sidebar-submenu">
@@ -98,18 +98,18 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="sidebar-dropdown">
-                        <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Affiliate Panel</a>
-                        <div class="sidebar-submenu">
-                            <ul>
-                                <li><a href="affiliate.php">Dashboard</a></li>
-                                <li><a href="commission-list.php">Commision</a></li>
-                                <li><a href="leaderboard.php">Leaderboard</a></li>
-                                <li><a href="webinar.php">Webinar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href=""><i class="ti ti-home me-2"></i>Setting</a></li>
+                    <!--<li class="sidebar-dropdown">-->
+                    <!--    <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Affiliate Panel</a>-->
+                    <!--    <div class="sidebar-submenu">-->
+                    <!--        <ul>-->
+                    <!--            <li><a href="affiliate.php">Dashboard</a></li>-->
+                    <!--            <li><a href="commission-list.php">Commision</a></li>-->
+                    <!--            <li><a href="leaderboard.php">Leaderboard</a></li>-->
+                    <!--            <li><a href="webinar.php">Webinar</a></li>-->
+                    <!--        </ul>-->
+                    <!--    </div>-->
+                    <!--</li>-->
+                    <!--<li><a href=""><i class="ti ti-home me-2"></i>Setting</a></li>-->
                 </ul>
                 <!-- sidebar-menu  -->
             </div>
@@ -151,18 +151,18 @@
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3"
                                         style="min-width: 200px;">
                                         <a class="dropdown-item d-flex align-items-center text-dark pb-3"
-                                            href="profile.html">
+                                            href="edit-profile.php">
                                             <img src="image/<?php echo $img_photo ?>" class="avatar avatar-md-sm rounded-circle border shadow"
                                                 alt="">
                                             <div class="flex-1 ms-2">
-                                                <span class="d-block">patel hiren vanrajbhai</span>
-                                                <small class="text-muted">MT190713</small>
+                                                <span class="d-block"><?php echo $username ?></span>
+                                                <small class="text-muted"> </small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
                                                     class="ti ti-mail"></i></span> Package: <?php echo $package_name ?></a>
                                                     <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Package Amount: <?php echo $package_amount ?></a>
-
+<a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-coin"></i></span> My Wallet: ₹<?php echo $row['amount'] ?></a>
                                         <!-- <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
                                                     class="ti ti-settings"></i></span> Sponsor ID: None</a> -->
                                         <div class="dropdown-divider border-top"></div>
@@ -196,7 +196,7 @@
                     </style>
                     <div class="row">
                         <div class="col-md-6">
-                            <iframe width="420" height="315" src="<?php echo $course ?>">
+                            <iframe width="100%" height="315" src="<?php echo $course ?>">
                             </iframe>
                         </div>
                         <div class="col-md-6">

@@ -13,6 +13,7 @@
     $package_query = "select * from package where username='$username'";
     $package_result = mysqli_query($con, $package_query);
     $package_row = mysqli_fetch_assoc($package_result);
+     $package_amount = $package_row['amount'];
     if($package_row){
     $package_name = $package_row['package_name'];
     }
@@ -31,14 +32,19 @@
 
         $sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
         $result =mysqli_fetch_assoc($sql);
-        $refered_by=$result['username'];
-        $userid = $_SESSION['id'];
-        $query = "SELECT * FROM `users` WHERE `id`=$userid";
-        $result_query = mysqli_query($con,$query);
-        $result = mysqli_fetch_assoc($result_query);
-        $username = $result['username'];
-        // $total_balance = $result['amount'];
-        $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `user_id` = '$id' AND `reference_id` = '$reference_code'");
+        if($result){
+        
+            $refered_by=$result['username'];
+            $userid = $_SESSION['id'];
+            $query = "SELECT * FROM `users` WHERE `id`=$userid";
+            $result_query = mysqli_query($con,$query);
+            $result = mysqli_fetch_assoc($result_query);
+            $username = $result['username'];
+            // $total_balance = $result['amount'];
+            $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `user_id` = '$id' AND `reference_id` = '$reference_code'");
+        }else {
+            $msg = "Invalid Reference Code";
+        }
         if(mysqli_num_rows($sql)){
             if(mysqli_num_rows($sql1) == 0){
               if($reference_code != $ref_code){
@@ -177,17 +183,17 @@
                                 <div class="dropdown dropdown-primary">
                                     <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="image/<?php echo $img_photo ?>" class="avatar avatar-ex-small rounded" alt=""></button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px;">
-                                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="profile.html">
+                                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="edit-profile.php">
                                             <img src="image/<?php echo $img_photo ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block"><?php echo $username ?></span>
-                                                <small class="text-muted">MT190713</small>
+                                                <small class="text-muted"> </small>
+                                                
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span> Package: <?php echo $package_name ?></a>
-                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Sponsor: None</a>
-                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Sponsor ID: None</a>
-                                        <div class="dropdown-divider border-top"></div>
+                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-coin"></i></span> Pckage amount: ₹<?php echo $package_amount ?></a>
+                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-coin"></i></span> My Wallet: ₹<?php echo $row['amount'] ?></a>
                                         <a class="dropdown-item text-dark" href="logout.php"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Logout</a>
                                     </div>
                                 </div>
@@ -235,7 +241,7 @@
                                         <h4 class="msg"></h4>
                                         <div class="d-flex justify-content-end bg-light rounded p-30 mx-10 my-15">
                                             <input type="text" class="form-control" name="reference_code"
-                                                placeholder="referral code">
+                                                placeholder="referral code" required>
                                             <input type="submit" class="btn btn-primary" name="refer" value="submit">
                                         </div>
                                         <hr>

@@ -8,6 +8,7 @@ ob_start();
     use PHPMailer\PHPMailer\Exception;
     require '.././vendor/autoload.php';
     $error = "";
+    $error1 = "";
 
     if(isset($_GET['refer'])) {
         $reference_code = $_GET['refer'];
@@ -90,13 +91,13 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                                 $mail->isSMTP();                                            //Send using SMTP
                                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                                $mail->Username   = 'hardikzz0409@gmail.com';                  
-                                $mail->Password   = 'cnrtxgwyqwmhocpa';        //SMTP password
+                                $mail->Username   = 'easyearnfoundation@gmail.com';                  
+                                $mail->Password   = 'qynsykogivpghiqv';        //SMTP password
                                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                                 $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
                                 //Recipients
-                                $mail->setFrom('hardikzz0409@gmail.com');
+                                $mail->setFrom('easyearnfoundation@gmail.com');
                                 $mail->addAddress($email);
         
                                 //Content
@@ -317,18 +318,29 @@ if(isset($_POST['submit']) || $_SERVER['REQUEST_METHOD']=='POST')
                             echo "</div>";
                             $today = date("F j, Y, g:i a"); 
                             
-                            if(isset($refered_code_post)) {
-                                $get_sql = mysqli_query($con,"SELECT * from users WHERE reference_id = '$reference_code'");
-                                $get_result =mysqli_fetch_assoc($get_sql);
-                                $refered_by=$get_result['username'];
+                            if(isset($_POST['sponsorId'])) {
+                                $reference_code = $_POST['sponsorId'];
+                                if($refer_code != '') {
+                                    $get_sql = mysqli_query($con,"SELECT `username`, `id` from users WHERE reference_id = '$reference_code'");
+                                    $get_result = mysqli_fetch_assoc($get_sql);
+                                    $refered_by = $get_result['username'];
+                                    $refered_by_uid = $get_result['id'];
+                                    $error1 = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;'>$refered_by</p>";
                                 
+                                } else {
+                                    $refered_by = 'invalid';
+                                    $error1 = "<p style='background: #f2dedf;color: #9y7c4150;border: 1px solid #e7ced1;padding:10px;text-align:center;'>Unexpected Error</p>";
+
+                                }
                             
-                            $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `username` = '$username' AND `reference_id` = '$reference_code'");
+                            
+                            // continue here 
+                            $sql1 = mysqli_query($con,"SELECT * from `reference` WHERE `user_id` = '$username' AND `refer_id` = '$reference_code'");
                             if(mysqli_num_rows($get_sql)){
                                 if(mysqli_num_rows($sql1) == 0){
                                   if($reference_code != $refer_code){
-                                    mysqli_query($con,"INSERT INTO `reference`(`username`,`refered_by`,`reference_id`,`timestamp`) VALUES ('$username','$refered_by','$reference_code','$today')");
-                                    $check_users = mysqli_query($con,"SELECT * from `reference` WHERE `username` = '$refered_by'");
+                                    mysqli_query($con,"INSERT INTO `reference`(`user_id`,`refer_id`, `code`) VALUES ('$username','$refered_by','$reference_code')");
+                                    $check_users = mysqli_query($con,"SELECT * from `reference` WHERE `user_id` = '$refered_by_uid'");
                                     $old_amount_query = mysqli_query($con,"SELECT * from `users` WHERE `username` = '$refered_by'");
                                     $old_amount_result =mysqli_fetch_assoc($old_amount_query);
                                     $old_amount = $old_amount_result['amount'];
@@ -419,6 +431,8 @@ ob_end_flush();
                                             <hr>
                                            
                                             <?php echo $error ?>
+                                            <?php echo $error1 ?>
+
                                             <form class="login-form mt-4" autocomplete="on" action="" method="POST">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -456,7 +470,7 @@ ob_end_flush();
                                                             <label class="form-label">Referal Code <span class="text-danger">*</span></label>
                                                             <div class="form-icon position-relative">
                                                                 <i data-feather="user" class="fea icon-sm icons"></i>
-                                                                <input type="text" class="form-control ps-5" placeholder="Referal Code" name="sponsorId" value = "<?php echo $reference_code?>" onchange="fetchName(this.value)" disabled>
+                                                                <input type="text" class="form-control ps-5" placeholder="Referal Code" name="sponsorId" value = "<?php echo $reference_code?>" onchange="fetchName(this.value)" >
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
@@ -495,6 +509,7 @@ ob_end_flush();
                                                             </div>
                                                         </div>
                                                     </div><!--end col-->
+                                                    <h5 id="discount" style="color: #069e10;"></h5>
 
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
@@ -555,21 +570,26 @@ ob_end_flush();
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script> 
         let package = {
-            'Elite Package':'1','Silver Package':'1999','Gold Package':'3500',        };
+            'Elite Package':'650','Silver Package':'2100','Gold Package':'3465',        };
         let packageExtra = {
             'Elite Package':'699','Silver Package':'2250','Gold Package':'3850',        };
-//         function fetchName(data){
-//             fetch('php/fetchname.php?mtid='+data)
-//   .then(response => response.json())
-//   .then(data => {
-//       if(typeof(data.error) =='undefined'){
-//           document.getElementById('sponsor').value = data[0].name;
-//       }
-//       else{
-//         document.getElementById('sponsor').value = '';
-//       }
-//   });
-        // }
+
+
+        function fetchName(data){
+        document.getElementById('sponsor').value = 'Invalid Refferal ID';
+
+            fetch('php/fetchname.php?rid='+data)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+      if(typeof(data.error) =='undefined' || data.error){
+          document.getElementById('sponsor').value = data[0];
+      }
+      else{
+        document.getElementById('sponsor').value = 'Invalid Refferal ID';
+      }
+  });
+        }
 
         const urlParams = new URLSearchParams(window.location.search);
         let packSelect = urlParams.get('package');
@@ -593,10 +613,13 @@ ob_end_flush();
         }
            function updatePrice(data){
                var referal = document.getElementById('sponsor').value;
-               if(referal==''){
+
+               if(referal=='' || referal == 'Invalid Refferal ID'){
                    document.getElementsByName('amount')[0].value = packageExtra[data];
                }else{
                    document.getElementsByName('amount')[0].value = package[data];
+                   document.getElementById('discount').innerText = '-10% Off on All Packages';
+
                }
            }
 

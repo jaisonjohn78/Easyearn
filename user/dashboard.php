@@ -10,6 +10,9 @@
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
+    $phone = $row['phone_no']; 
+    $email = $row['email'];
+    $refferral = $row['reference_id'];
     $amount = $row['amount'];
 
     if($row['package'] != 'success'){
@@ -138,11 +141,11 @@
                                 <div class="dropdown dropdown-primary">
                                     <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="image/<?php echo $img_photo ?>" class="avatar avatar-ex-small rounded" alt=""></button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px;">
-                                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="profile.html">
+                                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="edit-profile.php">
                                             <img src="image/<?php echo $img_photo ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block"><?php echo $username ?></span>
-                                                <small class="text-muted">EE190713</small>
+                                                <small class="text-muted"><?php echo $refferral ?></small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span> Package: <?php echo $package_name ?></a>
@@ -156,91 +159,141 @@
                                 </div>
                             </li>
                         </ul>
-                    </div><div class="row row-cols-xl-4 row-cols-md-2 row-cols-1">
-    <div class="col mt-4">
-        <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
-            <div class="d-flex align-items-center">
-                <div class="icon text-center rounded-pill">
-                    <i class="uil uil-user-circle fs-4 mb-0"></i>
-                </div>
-                <div class="flex-1 ms-3">
-                    <h6 class="mb-0 text-muted">Package Enrolled</h6>
-                    <p class="fs-5 text-dark fw-bold mb-0"><span><?php echo $selected_package ?></span></p>
-                </div>
+                    </div>
+                    
+                    <style>
+    .bg-fcb300d6{
+        background: linear-gradient(45deg, #fff 10%, #fcb300d6 95%);
+    }
+    .bg-3eb6e4{
+        background: linear-gradient(45deg, #3eb6e4 10%, #fff 95%);
+    }
+    .text-202942{
+        color: #202942 !important;
+    }
+</style>
+<div class="row dash-res-row">
+    <div class="col-md-6">
+        <div class="row row-cols-xl-2 row-cols-md-2 row-cols-1">
+            <div class="col mt-4 dash-res-mt-4">
+                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-fcb300d6 rounded shadow p-3 dash-res-p3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon text-center rounded-pill">
+                            <i class="uil uil-rupee-sign fs-4 mb-0"></i>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-0 text-202942">Today's Earning</h6>
+                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="<?php echo $amount ?>"></span></p>
+                        </div>
+                    </div>
+
+                    
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="d-flex align-items-center bg-white rounded shadow p-3 ">
-    <div class="icon text-center rounded-pill">
-        <i class="uil uil-calculator-alt fs-4 mb-0"></i>
-    </div>
-    <h5 class="ms-3">Your Total Earnings</h5>
-        <h1 class="ms-3 me-3 text-center">₹<?php echo $amount; ?></h1>
-    </div>
-    <!--end col-->
-    <!--end col-->
-</div>
-<!--end row-->
-
-<div class="row">
-    <div class="col-xl-8 col-lg-7 mt-4">
-        <h5 class="mb-0 fw-bold p-3">Enrolled Courses</h5>
-        <div class="row">
-        <a class="col-md-12" href = "learning-courses.php?course=1679091c5a880faf6fb5e6087eb1b2dc">
-                <div class="card shadow border-0 rounded">
+            <div class="col mt-4 dash-res-mt-4">
+                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-fcb300d6 rounded shadow p-3 dash-res-p3">
                     <div class="d-flex align-items-center">
+                        <div class="icon text-center rounded-pill">
+                            <i class="uil uil-rupee-sign fs-4 mb-0"></i>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-0 text-202942">Total's Earning</h6>
+                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="<?php echo $amount ?>"></span></p>
+                        </div>
+                    </div>
 
-                    </div>
-                </div>
-            </a>
-                        <a class="col-md-4" href = "learning-courses.php?course=1679091c5a880faf6fb5e6087eb1b2dc">
-                <div class="card shadow border-0 rounded">
+                    
+                </a>
+            </div>
+            <!--end col-->
+            <div class="col mt-4 dash-res-mt-4">
+                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-3eb6e4 rounded shadow p-3 dash-res-p3">
                     <div class="d-flex align-items-center">
-                        <img src="assets/images/sales.png" class="img-fluid avatar avatar-md-md rounded shadow" alt="">
-                        <h6 class="mb-0 ms-3 me-3">Sales Master Class</h6>
+                        <div class="icon text-center rounded-pill">
+                            <i class="uil uil-rupee-sign fs-4 mb-0"></i>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-0 text-202942">Refferal Earning</h6>
+                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target=""></span></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-                        <a class="col-md-4" href = "learning-courses.php?course=9bf31c7ff062936a96d3c8bd1f8f2ff3">
-                <div class="card shadow border-0 rounded">
-                    <div class="d-flex align-items-center">
-                        <img src="assets/images/lead.png" class="img-fluid avatar avatar-md-md rounded shadow" alt="">
-                        <h6 class="mb-0 ms-3 me-3">Lead Generation Mastery</h6>
-                    </div>
-                </div>
-            </a>
-                    </div>
-    </div>
-    <!--end col-->
 
-    <div class="col-xl-4 col-lg-5 mt-4 rounded">
+                    
+                </a>
+            </div>
+            <!--end col-->
+
+
+
+
+            <div class="col mt-4">
+                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-3eb6e4 rounded shadow p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon text-center rounded-pill">
+                            <i class="uil uil-users-alt fs-4 mb-0"></i>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-0 text-202942">Total Joining</h6>
+                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="8"></span></p>
+                        </div>
+                    </div>
+
+                    
+                </a>
+            </div>
+            <div class="col rounded dash-res-extra mt-4">
         <div class="card shadow border-0">
-            <div class="p-4 border-bottom row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <img src="assets/images/earn.png" width="100%" />
+            <div class="p-4 border-bottom">
+                <div class="row">
+                    <div class="col-md-8 mt-4">
+                        <h5 class="mb-0 text-left">Email</h5>
+                        <h6 class="text-muted ps-2"><?php echo $email ?></h6>
+                        <h5 class="mb-0 text-left">Phone</h5>
+                        <h6 class="text-muted ps-2"><?php echo $phone ?></h6>
+                        <h5 class="mb-0 text-left">Username</h5>
+                        <h6 class="text-muted ps-2"><?php echo $username ?></h6>
+                        <h5 class="mb-0 text-left">Package</h5>
+                        <h6 class="text-muted ps-2">Elite Package</h6>
+                        
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center m-3">
-            <a href="courses.php" class="btn btn-outline-primary col-md-6">Start Earning</a>
             </div>
         </div>
     </div>
-    <!--end col-->
+            <!--end col-->
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 mt-4 rounded">
+        <div class="card shadow border-0">
+            <div class="p-4 border-bottom dash-p-4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mt-4 text-md-start text-center dash-res-user">
+                            <div class="text-center">
+                                <img src="image/<?php echo $img_photo ?>" class="avatar float-md-center avatar-medium rounded-circle shadow md-4" alt="">
+                            </div>
+                            <div class="pt-4">
+                                <h6 class="mb-0 text-center"><?php echo $username ?></h6>
+                                <h6 class="mb-0 text-center"><?php echo 'UserID : E'.$id ?></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mt-4 dash-res">
+                        <h5 class="mb-0 text-left">Email</h5>
+                        <h6 class="text-muted ps-2"><?php echo $email ?></h6>
+                        <h5 class="mb-0 text-left">Phone</h5>
+                        <h6 class="text-muted ps-2"><?php echo $phone ?></h6>
+                        <h5 class="mb-0 text-left">Refferal Code</h5>
+                        <h6 class="text-muted ps-2"><?php echo $refferral ?></h6>
+                        <h5 class="mb-0 text-left">Package</h5>
+                        <h6 class="text-muted ps-2">Elite Package</h6>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!--end row-->
-</main>
-<!--End page-content" -->
-</div>
-<!-- page-wrapper -->
-
-<!-- Offcanvas Start -->
-
-            <!-- sidebar-wrapper  -->
-
-            <!-- Start Page Content -->
- 
-        <!-- Offcanvas End -->
         
         <!-- javascript -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>

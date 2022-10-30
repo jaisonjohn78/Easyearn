@@ -10,6 +10,7 @@
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
+    
     $error="";
     $status="";
 
@@ -93,6 +94,7 @@
     <!-- Css -->
     <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
 
 </head>
 
@@ -177,11 +179,12 @@
                                             <img src="image/<?php echo $img_photo ?>" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block"><?php echo $username ?></span>
-                                                <small class="text-muted">MT190713</small>
+                                                <small class="text-muted"> </small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span> Package: <?php echo $package_name?></a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Package Amount: <?php echo $package_amount ?></a>
+                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-coin"></i></span> My Wallet: ₹<?php echo $row['amount'] ?></a>
                                         <div class="dropdown-divider border-top"></div>
                                         <a class="dropdown-item text-dark" href="logout.php"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Logout</a>
                                     </div>
@@ -280,6 +283,10 @@
         <!-- Offcanvas End -->
         
         <!-- javascript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js" integrity="sha512-synHs+rLg2WDVE9U0oHVJURDCiqft60GcWOW7tXySy8oIr0Hjl3K9gv7Bq/gSj4NDVpc5vmsNkMGGJ6t2VpUMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    
+        <script src="https://unpkg.com/cropperjs"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->
         <script src="assets/js/simplebar.min.js"></script>

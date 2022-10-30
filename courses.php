@@ -167,7 +167,7 @@
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=0"><img src="./admin@millionairetrack/images/course1653069060.png"
+                          <a href="user/register.php?package=0"><img src="./admin@millionairetrack/images/course1657015785.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
@@ -177,7 +177,7 @@
                           </div>
                           <div class="eduman-course-meta">
                              <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
+                                <span class="price-now">Elite Package</span>
                              </div>
                           </div>
                        </div>
@@ -192,92 +192,17 @@
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=1"><img src="./admin@millionairetrack/images/course1653069060.png"
+                          <a href="user/register.php?package=0"><img src="./admin@millionairetrack/images/course1655239068.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
                           <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=1">Email Marketing</a>
+                             <h5><a href="user/register.php?package=0">Email Marketing</a>
                              </h5>
                           </div>
                           <div class="eduman-course-meta">
                              <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
-                             </div>
-                          </div>
-                       </div>
-                       <div class="eduman-course-footer">
-                          <div class="course-deteals-btn">
-                             <a href="user/register.php?package=1"><span class="me-2">Get Started</span><i
-                                   class="far fa-arrow-right"></i></a>
-                          </div>
-                       </div>
-                    </div>
-                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
-                    <div class="eduman-course-main-wrapper mb-30">
-                      
-                       <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=1"><img src="./admin@millionairetrack/images/course1653069060.png"
-                                alt="course-img"></a>
-                       </div>
-                       <div class="eduman-course-wraper">
-                          <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=1">Wordpress Development</a>
-                             </h5>
-                          </div>
-                          <div class="eduman-course-meta">
-                             <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
-                             </div>
-                          </div>
-                       </div>
-                       <div class="eduman-course-footer">
-                          <div class="course-deteals-btn">
-                             <a href="user/register.php?package=1"><span class="me-2">Get Started</span><i
-                                   class="far fa-arrow-right"></i></a>
-                          </div>
-                       </div>
-                    </div>
-                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
-                    <div class="eduman-course-main-wrapper mb-30">
-                      
-                       <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=12"><img src="./admin@millionairetrack/images/course1653069060.png"
-                                alt="course-img"></a>
-                       </div>
-                       <div class="eduman-course-wraper">
-                          <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=12">Stock Marketing</a>
-                             </h5>
-                          </div>
-                          <div class="eduman-course-meta">
-                             <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
-                             </div>
-                          </div>
-                       </div>
-                       <div class="eduman-course-footer">
-                          <div class="course-deteals-btn">
-                             <a href="user/register.php?package=12"><span class="me-2">Get Started</span><i
-                                   class="far fa-arrow-right"></i></a>
-                          </div>
-                       </div>
-                    </div>
-                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
-                    <div class="eduman-course-main-wrapper mb-30">
-                      
-                       <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=0"><img src="./admin@millionairetrack/images/course1653069060.png"
-                                alt="course-img"></a>
-                       </div>
-                       <div class="eduman-course-wraper">
-                          <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=0">Sales Master Class</a>
-                             </h5>
-                          </div>
-                          <div class="eduman-course-meta">
-                             <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
+                                <span class="price-now">Elite Package</span>
                              </div>
                           </div>
                        </div>
@@ -292,23 +217,23 @@
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=12"><img src="./admin@millionairetrack/images/course1653069060.png"
+                          <a href="user/register.php?package=1"><img src="./admin@millionairetrack/images/course1653214935.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
                           <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=12">Communication Skill</a>
+                             <h5><a href="user/register.php?package=1">Web Development</a>
                              </h5>
                           </div>
                           <div class="eduman-course-meta">
                              <div class="eduman-course-price">
-                                <span class="price-now">Gold Package</span>
+                                <span class="price-now">Silver Package</span>
                              </div>
                           </div>
                        </div>
                        <div class="eduman-course-footer">
                           <div class="course-deteals-btn">
-                             <a href="user/register.php?package=12"><span class="me-2">Get Started</span><i
+                             <a href="user/register.php?package=1"><span class="me-2">Get Started</span><i
                                    class="far fa-arrow-right"></i></a>
                           </div>
                        </div>
@@ -317,12 +242,12 @@
                     <div class="eduman-course-main-wrapper mb-30">
                       
                        <div class="eduman-course-thumb w-img">
-                          <a href="user/register.php?package=1"><img src="./admin@millionairetrack/images/course1653069060.png"
+                          <a href="user/register.php?package=2"><img src="./admin@millionairetrack/images/course1653069060.png"
                                 alt="course-img"></a>
                        </div>
                        <div class="eduman-course-wraper">
                           <div class="eduman-course-text">
-                             <h5><a href="user/register.php?package=1">Instagram Marketing</a>
+                             <h5><a href="user/register.php?package=2">Stock Marketing</a>
                              </h5>
                           </div>
                           <div class="eduman-course-meta">
@@ -333,7 +258,82 @@
                        </div>
                        <div class="eduman-course-footer">
                           <div class="course-deteals-btn">
+                             <a href="user/register.php?package=2"><span class="me-2">Get Started</span><i
+                                   class="far fa-arrow-right"></i></a>
+                          </div>
+                       </div>
+                    </div>
+                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
+                    <div class="eduman-course-main-wrapper mb-30">
+                      
+                       <div class="eduman-course-thumb w-img">
+                          <a href="user/register.php?package=2"><img src="./admin@millionairetrack/images/Package1646449414.png"
+                                alt="course-img"></a>
+                       </div>
+                       <div class="eduman-course-wraper">
+                          <div class="eduman-course-text">
+                             <h5><a href="user/register.php?package=2">Sales Master Class</a>
+                             </h5>
+                          </div>
+                          <div class="eduman-course-meta">
+                             <div class="eduman-course-price">
+                                <span class="price-now">Gold Package</span>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="eduman-course-footer">
+                          <div class="course-deteals-btn">
+                             <a href="user/register.php?package=2"><span class="me-2">Get Started</span><i
+                                   class="far fa-arrow-right"></i></a>
+                          </div>
+                       </div>
+                    </div>
+                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
+                    <div class="eduman-course-main-wrapper mb-30">
+                      
+                       <div class="eduman-course-thumb w-img">
+                          <a href="user/register.php?package=1"><img src="./admin@millionairetrack/images/videom.jpeg"
+                                alt="course-img"></a>
+                       </div>
+                       <div class="eduman-course-wraper">
+                          <div class="eduman-course-text">
+                             <h5><a href="user/register.php?package=1">Video Marketing</a>
+                             </h5>
+                          </div>
+                          <div class="eduman-course-meta">
+                             <div class="eduman-course-price">
+                                <span class="price-now">Silver Package</span>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="eduman-course-footer">
+                          <div class="course-deteals-btn">
                              <a href="user/register.php?package=1"><span class="me-2">Get Started</span><i
+                                   class="far fa-arrow-right"></i></a>
+                          </div>
+                       </div>
+                    </div>
+                 </div><div class="col-xl-3 col-lg-3 col-md-6 grid-item c-2">
+                    <div class="eduman-course-main-wrapper mb-30">
+                      
+                       <div class="eduman-course-thumb w-img">
+                          <a href="user/register.php?package=0"><img src="./admin@millionairetrack/images/1Package1646449414.png"
+                                alt="course-img"></a>
+                       </div>
+                       <div class="eduman-course-wraper">
+                          <div class="eduman-course-text">
+                             <h5><a href="user/register.php?package=0">Sales Master class</a>
+                             </h5>
+                          </div>
+                          <div class="eduman-course-meta">
+                             <div class="eduman-course-price">
+                                <span class="price-now">Elite Package</span>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="eduman-course-footer">
+                          <div class="course-deteals-btn">
+                             <a href="user/register.php?package=0"><span class="me-2">Get Started</span><i
                                    class="far fa-arrow-right"></i></a>
                           </div>
                        </div>

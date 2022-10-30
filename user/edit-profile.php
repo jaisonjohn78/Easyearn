@@ -10,6 +10,8 @@
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
+    $email = $row['email'];
+    $refferal = $row['reference_id'];
     $phone_number = $row['phone_no'];
 
     $package_query = "select * from package where username='$username'";
@@ -180,19 +182,19 @@
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3"
                                         style="min-width: 200px;">
                                         <a class="dropdown-item d-flex align-items-center text-dark pb-3"
-                                            href="profile.html">
+                                            href="edit-profile.php">
                                            
                                             <img src="image/<?php echo $img_photo; ?>" class="avatar float-md-left avatar-medium rounded-circle shadow me-md-4" alt="" id="file-data">
                                             
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block"><?php echo $username ?></span>
-                                                <small class="text-muted">MT190713</small>
+                                                <small class="text-muted"><?php echo $refferal ?></small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span> Package: <?php echo $package_name ?></a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Package Amount: <?php echo $package_amount ?></a>
 
-                                        
+                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-coin"></i></span> My Wallet: ₹<?php echo $row['amount'] ?></a>
                                         <div class="dropdown-divider border-top"></div>
                                         <a class="dropdown-item text-dark" href="logout.php"><span
                                                 class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
@@ -212,7 +214,7 @@
                             <div class="card border-0 rounded shadow">
                                 <div class="card-body">
                                     <h5 class="text-md-start text-center mb-0">Personal Detail :</h5>
-
+                                    <hr>
                                     <div class="mt-4 text-md-start text-center d-sm-flex">
                                         <?php echo $error ?>
                                         <form method="POST" action="" enctype="multipart/form-data">
@@ -228,7 +230,7 @@
                                             
                                             <div class="mt-md-4 mt-3 mt-sm-0">
                                                 <label class="form-label">Profile Photo Upload</label>
-                                                <input class="form-control" type="file" name="uploadfile" value="" />
+                                                <input class="form-control" type="file" name="uploadfile" value="" required/>
                                                 <!-- <a onclick="document.getElementById('profile').click();" class="btn btn-primary mt-2">Change Picture</a> -->
                                                 <button type="submit" name="upload" class="btn btn-primary mt-2">Change
                                                     Picture</button>
@@ -241,7 +243,7 @@
                                         <div class="form-icon position-relative">
                                             <input name="address" id="referalLink" type="text" class="form-control ps-5"
                                                 placeholder="Address :"
-                                                value="https://easyearn.in/user/register.php?sponsor=MT190713">
+                                                value="https://www.easyearn.in/user/register.php?refer=<?php echo $refferal ?>">
                                         </div>
                                     </div>
                                     <div class="mt-md-4 mt-3 mt-sm-0">
@@ -251,41 +253,8 @@
                                         <input type="file" id="profile" hidden name="profile" />
                                         <?php echo $error ?>
                                         <div class="row mt-4">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Sponsor id</label>
-                                                    <div class="form-icon position-relative">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            class="feather feather-bookmark fea icon-sm icons">
-                                                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z">
-                                                            </path>
-                                                        </svg>
-                                                        <input id="first" type="text" class="form-control ps-5"
-                                                            placeholder="First Name :" disabled value="None">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Sponsor Name</label>
-                                                    <div class="form-icon position-relative">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            class="feather feather-user fea icon-sm icons">
-                                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                                            <circle cx="12" cy="7" r="4"></circle>
-                                                        </svg>
-                                                        <input id="first" type="text" class="form-control ps-5"
-                                                            placeholder="First Name :" disabled
-                                                            value="None">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
+                                            
                                             <!--end col-->
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -303,7 +272,7 @@
                                                         </svg>
                                                         <input id="email" type="email" class="form-control ps-5"
                                                             placeholder="Your email :" disabled
-                                                            value="patelherry2309@gmail.com">
+                                                            value="<?php echo $email ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -403,78 +372,7 @@
                         </div>
                         <!--end col-->
 
-                        <div class="col-lg-4 mt-4">
-                            <div class="card border-0 rounded shadow p-4">
-                                <h5 class="mb-0">Change password :</h5>
-                                <form action="php/update-password.php" method="POST">
-                                    <div class="row mt-4">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Old password :</label>
-                                                <div class="form-icon position-relative">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-key fea icon-sm icons">
-                                                        <path
-                                                            d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
-                                                        </path>
-                                                    </svg>
-                                                    <input type="password" class="form-control ps-5"
-                                                        placeholder="Old password" required="" name="oldPassword">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">New password :</label>
-                                                <div class="form-icon position-relative">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-key fea icon-sm icons">
-                                                        <path
-                                                            d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
-                                                        </path>
-                                                    </svg>
-                                                    <input type="password" class="form-control ps-5"
-                                                        placeholder="New password" required="" name="password">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Re-type New password :</label>
-                                                <div class="form-icon position-relative">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-key fea icon-sm icons">
-                                                        <path
-                                                            d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
-                                                        </path>
-                                                    </svg>
-                                                    <input type="password" class="form-control ps-5"
-                                                        placeholder="Re-type New password" required=""
-                                                        name="confirmPassword">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12 mt-2 mb-0">
-                                            <button class="btn btn-primary" name="updatePassword">Save password</button>
-                                        </div>
-                                        <!--end col-->
-                                    </div>
-                                    <!--end row-->
-                                </form>
-                            </div>
-
-                        </div>
+            
 
                         <div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                             aria-hidden="true">

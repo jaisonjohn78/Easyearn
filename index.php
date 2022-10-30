@@ -95,8 +95,8 @@
                               <ul>
                                  <li class="menu-item"><a href="index.html">Home</a>
                                  </li>
-                                 <!-- <li class="menu-item"><a href="courses.php">Course</a>
-                                 </li> -->
+                                  <li class="menu-item"><a href="courses.php">Course</a>
+                                 </li> 
                                  <li class="menu-item"><a href="about.php">About US</a>
                                  </li>
                                  <li class="menu-item"><a href="contact.php">Contact US</a>
@@ -143,17 +143,17 @@
 
    <main>
       <!-- hero-area-sart -->
-      <section class="slider-area hero-height position-relative fix" data-background="assets/images/header-img.jpg">
+      <section class="slider-area hero-height position-relative fix" data-background="assets/images/header-img2.png">
          <img class="shape-3 d-none d-xxl-block" src="assets/img/shape/shape-03.png" alt="image not found">
          <div class="container">
             <div class="row">
                <div class="col-xl-6 col-lg-6 col-md-6">
                   <div class="hero-text pt-95">
-                     <h5>Discover your journey</h5>
-                     <h2>21<sup>st</sup>Century Skills Are Here </h2>
-                     <p>If you want something you've never had, you must be willing to do something you've never done.” “The body achieves what the mind believes.” “Once you are exercising regularly, the hardest thing is to stop it.” “If you don't make time for exercise, you'll probably have to make time for illness.</p>
+                     <h5>Presenting you, The</h5>
+                     <h2>22<sup>nd</sup>Century Skills Are Here </h2>
+                     <p>If you want something you've never had, you must be willing to do something you've never done.” “Once you are exercising regularly, the hardest thing is to stop it.” “The body achieves what the mind believes.”  “If you don't make time for exercise, you'll probably have to make time for illness.</p>
                      <div class="hero-btn">
-                        <a class="edu-btn" href="courses.php">View all course</a>
+                        <a class="edu-btn" href="courses.php">View More</a>
                      </div>
                   </div>
                </div>
@@ -517,23 +517,68 @@
                                                 <a href="user/register.php?package=12">
                                                     <div class="categories-wrapper text-center mb-30">
                                                         <div class="categiories-thumb">
-                                                            <img src = "admin@millionairetrack/images/Package1646364247.png" width = "100%"/>
+                                                            <img src = "admin@millionairetrack/images/course1653069060.png" width = "100%"/>
                                                         </div>
                                                         <div class="categories-content">
-                                                            <h4>Gold Package</h4>
-                                                            <p>13 Course available</p>
+                                                            <h4>Stock Market Trading</h4>
+                                                            <p>on High Demand</p>
                                                         </div>
                                                     </div>
                                                 </a>
-                                            </div>                                            <div class="swiper-slide">
+                                            </div>  
+                                            <div class="swiper-slide">
+                                                <a href="user/register.php?package=12">
+                                                    <div class="categories-wrapper text-center mb-30">
+                                                        <div class="categiories-thumb">
+                                                            <img src = "admin@millionairetrack/images/course1657015785.png" width = "100%"/>
+                                                        </div>
+                                                        <div class="categories-content">
+                                                            <h4>Lead Generation</h4>
+                                                            <p>Most Popular</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>  
+                                            <div class="swiper-slide">
+                                                <a href="user/register.php?package=12">
+                                                    <div class="categories-wrapper text-center mb-30">
+                                                        <div class="categiories-thumb">
+                                                            <img src = "admin@millionairetrack/images/course1655239068.png" width = "100%"/>
+                                                        </div>
+                                                        <div class="categories-content">
+                                                            <h4>Email Marketing</h4>
+                                                            <p>Best Course</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>  
+                                            <div class="swiper-slide">
+                                                <a href="user/register.php?package=12">
+                                                    <div class="categories-wrapper text-center mb-30">
+                                                        <div class="categiories-thumb">
+                                                            <img src = "admin@millionairetrack/images/course1653214935.png" width = "100%"/>
+                                                        </div>
+                                                        <div class="categories-content">
+                                                            <h4>Web development</h4>
+                                                            <p>On High Demand</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>  
+                                             
+                                            
+                                            
+                                            
+                                            
+                                            <div class="swiper-slide">
                                                 <a href="user/register.php?package=1">
                                                     <div class="categories-wrapper text-center mb-30">
                                                         <div class="categiories-thumb">
-                                                            <img src = "admin@millionairetrack/images/Package1646364204.png" width = "100%"/>
+                                                            <img src = "admin@millionairetrack/images/videom.jpeg" width = "100%"/>
                                                         </div>
                                                         <div class="categories-content">
-                                                            <h4>Silver Package</h4>
-                                                            <p>13 Course available</p>
+                                                            <h4>Video Marketing</h4>
+                                                            <p>Most Recommended</p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -541,11 +586,11 @@
                                                 <a href="user/register.php?package=0">
                                                     <div class="categories-wrapper text-center mb-30">
                                                         <div class="categiories-thumb">
-                                                            <img src = "admin@millionairetrack/images/Package1646364123.png" width = "100%"/>
+                                                            <img src = "admin@millionairetrack/images/Package1646449414.png" width = "100%"/>
                                                         </div>
                                                         <div class="categories-content">
-                                                            <h4>Elite Package</h4>
-                                                            <p>13 Course available</p>
+                                                            <h4>Master Class</h4>
+                                                            <p>on High Demand</p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -582,7 +627,7 @@
                            <a href="/user/register.php">Now Learning and Earning is Easy by Easyearn</a>
                         </div>
                         <div class="browser-btn">
-                           <a class="course-btn" href="/user/register.php">Start Now</a>
+                           <a class="course-btn" href="user/register.php">Start Now</a>
                         </div>
                      </div>
                   </div>
@@ -648,7 +693,7 @@
                <div class="col-lg-6 offset-lg-3">
                   <div class="section-title text-center mb-55">
                      <h2>What Students<br>
-                        Think and Say About <span class="down-mark-line">Eduman</span></h2>
+                        Think and Say About <span class="down-mark-line">Easy Earn</span></h2>
                   </div>
                </div>
             </div>
@@ -682,6 +727,8 @@
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+
                         </div>
                      </div>
                   </div>
@@ -736,6 +783,8 @@
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+
                         </div>
                      </div>
                   </div>

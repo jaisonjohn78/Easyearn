@@ -11,7 +11,8 @@
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $username = $row['username'];
-    
+    $refferal = $row['reference_id'];
+    $amount = $row['amount'];
     
     if(isset($_GET['id']) && $_GET['id'] != ''){
         $get_package_name = $_GET['package'];
@@ -129,10 +130,10 @@
             <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
                 <div class="sidebar-brand">
                     <a href="logout.php">
-                        <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt="">
-                        <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
+                        <img src="assets/images/logo.png" height="24" alt="">
+                    
                         <span class="sidebar-colored">
-                            <img src="assets/images/logo.png" height="24" alt="" style="height:50px;">
+                            <img src="assets/images/logo.png" height="24" style="height:50px;">
                             Easyearn
                         </span>
                     </a>
@@ -204,7 +205,7 @@
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3"
                                         style="min-width: 200px;">
                                         <a class="dropdown-item d-flex align-items-center text-dark pb-3"
-                                            href="profile.html">
+                                            href="edit-profile.php">
                                             <?php
                                                 $img_query1 = " select * from users where id=$id ";
                                                 $img_result1 = mysqli_query($con, $img_query1);
@@ -218,14 +219,14 @@
                                                 ?>
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block"><?php echo $username ?></span>
-                                                <small class="text-muted">MT190713</small>
+                                                <small class="text-muted"><?php echo $refferal ?></small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
                                                     class="ti ti-mail"></i></span> Package:
                                             <?php echo $package_name ?></a>
                                             <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span> Package Amount: <?php echo $package_amount ?></a>
-
+                                        <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i class="ti ti-coin"></i></span> My Wallet: ₹<?php echo $amount ?></a>
                                         <!-- <a class="dropdown-item text-dark"><span class="mb-0 d-inline-block me-1"><i
                                                     class="ti ti-settings"></i></span> Sponsor ID: None</a> -->
                                         <div class="dropdown-divider border-top"></div>

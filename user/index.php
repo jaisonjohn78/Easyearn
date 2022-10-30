@@ -7,11 +7,11 @@
     
     global $con;
     $error = "";
-    if(isset($_GET['authen'])) {
+    if(isset($_GET['auth'])) {
         $error = "<div style='color:green'> Payment Successfull please login to Visit Dashboard </div>";
         // set_message($error);
     } else {
-        $_GET['authen'] = '';
+        $_GET['auth'] = '';
 
     }
 
@@ -31,8 +31,8 @@
                 $username = mysqli_real_escape_string($con, $_POST['username']);
                 $password = mysqli_real_escape_string($con, $_POST['password']);
 
-                if(isset($_GET['authen'])) {
-                    if($_GET['authen'] == 'success') {
+                if(isset($_GET['auth'])) {
+                    if($_GET['auth'] == 'success') {
                         $id = $_POST['username'];
                         $sql = mysqli_query($con, "UPDATE `users` SET `package`='success' WHERE `email`='$username' OR `phone_no`='$username'");
                     }

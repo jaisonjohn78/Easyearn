@@ -8,7 +8,7 @@
     $hostname = "localhost";
     $username = "root";
     $password = "";
-    $database = "easyearn";
+    $database = "u706182210_easyearn";
 
     // $con = mysqli_connect("localhost","root","","easyearn");
     
@@ -18,7 +18,7 @@
     // }
 
     $con = mysqli_connect($hostname, $username, $password, $database) or die("Database connection failed");
-    $base_url = "http://localhost/Easyearn/";
-    $my_email = "hardikzz0409@gmail.com";
-    $password = "cnrtxgwyqwmhocpa";
+    $base_url = "http://easyearn.in/";
+    $my_email = "easyearnfoundation@gmail.com";
+    $password = "qynsykogivpghiqv";
 ?>

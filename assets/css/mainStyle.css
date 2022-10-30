@@ -1,14 +1,4 @@
 @charset "UTF-8";
-/*-----------------------------------------------------------------------------------
-
-    Theme Name: Eduman - Education & Online Courses HTML Template
-    Author: Bdevs
-    Support: https://www.devsnews.com/support/
-    Description: Eduman - Education & Online Courses HTML Template
-    Version: 1.0
-
------------------------------------------------------------------------------------
-
 /************ TABLE OF CONTENTS ***************
 
 01. common style
@@ -579,7 +569,7 @@ p {
   font-size: 16px;
   font-weight: 600;
   color: #ffffff;
-  background-color: #24B1E5;
+  background-color: #126c7a;
   padding: 0 40px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -2367,7 +2357,7 @@ div.mean-container a.meanmenu-reveal {
 
 .shape-4 {
   position: absolute;
-  top: 335px;
+  top: 200px;
   left: 150px;
   border-radius: 12px;
   background: #ffffff;
@@ -2378,13 +2368,13 @@ div.mean-container a.meanmenu-reveal {
 }
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
   .shape-4 {
-    top: 250px;
+    top: 200px;
     left: -15px;
   }
 }
 @media only screen and (min-width: 1600px) and (max-width: 1800px) {
   .shape-4 {
-    top: 320px;
+    top: 200px;
     left: 180px;
   }
 }
@@ -2396,7 +2386,7 @@ div.mean-container a.meanmenu-reveal {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .shape-4 {
-    top: 274px;
+    top: 200px;
     left: 0px;
   }
 }
